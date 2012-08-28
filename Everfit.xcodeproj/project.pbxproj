@@ -1,0 +1,644 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2058CE5915ED7FA40055506C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5815ED7FA40055506C /* UIKit.framework */; };
+		2058CE5B15ED7FA40055506C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5A15ED7FA40055506C /* Foundation.framework */; };
+		2058CE5D15ED7FA40055506C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5C15ED7FA40055506C /* CoreGraphics.framework */; };
+		2058CE6315ED7FA40055506C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE6115ED7FA40055506C /* InfoPlist.strings */; };
+		2058CE6515ED7FA40055506C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE6415ED7FA40055506C /* main.m */; };
+		2058CE6915ED7FA40055506C /* EverfitAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */; };
+		2058CE6C15ED7FA40055506C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */; };
+		2058CE6F15ED7FA40055506C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */; };
+		2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE7115ED7FA40055506C /* EverfitViewController.m */; };
+		2058CE7A15ED7FA40055506C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE7915ED7FA40055506C /* SenTestingKit.framework */; };
+		2058CE7B15ED7FA40055506C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5815ED7FA40055506C /* UIKit.framework */; };
+		2058CE7C15ED7FA40055506C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5A15ED7FA40055506C /* Foundation.framework */; };
+		2058CE8415ED7FA50055506C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE8215ED7FA50055506C /* InfoPlist.strings */; };
+		2058CE8715ED7FA50055506C /* EverfitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE8615ED7FA50055506C /* EverfitTests.m */; };
+		2058CEDF15ED84E60055506C /* libEvernoteAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CEDE15ED84E60055506C /* libEvernoteAPI.a */; };
+		2058CF4615ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
+		2058CF4715ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
+		2058CF7C15ED87760055506C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CF7B15ED87760055506C /* Security.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2058CE7D15ED7FA40055506C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2058CE4B15ED7FA40055506C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2058CE5315ED7FA40055506C;
+			remoteInfo = Everfit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2058CE5415ED7FA40055506C /* Everfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2058CE5815ED7FA40055506C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2058CE5A15ED7FA40055506C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2058CE5C15ED7FA40055506C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2058CE6015ED7FA40055506C /* Everfit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Everfit-Info.plist"; sourceTree = "<group>"; };
+		2058CE6215ED7FA40055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2058CE6415ED7FA40055506C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2058CE6615ED7FA40055506C /* Everfit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Everfit-Prefix.pch"; sourceTree = "<group>"; };
+		2058CE6715ED7FA40055506C /* EverfitAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverfitAppDelegate.h; sourceTree = "<group>"; };
+		2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitAppDelegate.m; sourceTree = "<group>"; };
+		2058CE6B15ED7FA40055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		2058CE6E15ED7FA40055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		2058CE7015ED7FA40055506C /* EverfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverfitViewController.h; sourceTree = "<group>"; };
+		2058CE7115ED7FA40055506C /* EverfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitViewController.m; sourceTree = "<group>"; };
+		2058CE7815ED7FA40055506C /* EverfitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverfitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2058CE7915ED7FA40055506C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2058CE8115ED7FA50055506C /* EverfitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EverfitTests-Info.plist"; sourceTree = "<group>"; };
+		2058CE8315ED7FA50055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2058CE8515ED7FA50055506C /* EverfitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverfitTests.h; sourceTree = "<group>"; };
+		2058CE8615ED7FA50055506C /* EverfitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitTests.m; sourceTree = "<group>"; };
+		2058CEDE15ED84E60055506C /* libEvernoteAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEvernoteAPI.a; sourceTree = "<group>"; };
+		2058CEF315ED85D10055506C /* GCOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCOAuth.h; sourceTree = "<group>"; };
+		2058CEF615ED85D10055506C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		2058CEFA15ED85D10055506C /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		2058CEFE15ED85D10055506C /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		2058CF0115ED85D10055506C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2058CF0315ED85D10055506C /* TBinaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBinaryProtocol.h; sourceTree = "<group>"; };
+		2058CF0515ED85D10055506C /* TProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocol.h; sourceTree = "<group>"; };
+		2058CF0615ED85D10055506C /* TProtocolException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolException.h; sourceTree = "<group>"; };
+		2058CF0815ED85D10055506C /* TProtocolFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolFactory.h; sourceTree = "<group>"; };
+		2058CF0915ED85D10055506C /* TProtocolUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProtocolUtil.h; sourceTree = "<group>"; };
+		2058CF0B15ED85D10055506C /* TApplicationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TApplicationException.h; sourceTree = "<group>"; };
+		2058CF0D15ED85D10055506C /* TException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TException.h; sourceTree = "<group>"; };
+		2058CF0F15ED85D10055506C /* Thrift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thrift.h; sourceTree = "<group>"; };
+		2058CF1015ED85D10055506C /* TProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessor.h; sourceTree = "<group>"; };
+		2058CF1115ED85D10055506C /* TProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TProcessorFactory.h; sourceTree = "<group>"; };
+		2058CF1315ED85D10055506C /* THTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THTTPClient.h; sourceTree = "<group>"; };
+		2058CF1515ED85D10055506C /* TMemoryBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMemoryBuffer.h; sourceTree = "<group>"; };
+		2058CF1715ED85D10055506C /* TTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransport.h; sourceTree = "<group>"; };
+		2058CF1815ED85D10055506C /* TTransportException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTransportException.h; sourceTree = "<group>"; };
+		2058CF1B15ED85D10055506C /* EDAM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAM.h; sourceTree = "<group>"; };
+		2058CF1C15ED85D10055506C /* EDAMErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMErrors.h; sourceTree = "<group>"; };
+		2058CF1E15ED85D10055506C /* EDAMLimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMLimits.h; sourceTree = "<group>"; };
+		2058CF2015ED85D10055506C /* EDAMNoteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMNoteStore.h; sourceTree = "<group>"; };
+		2058CF2215ED85D10055506C /* EDAMTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMTypes.h; sourceTree = "<group>"; };
+		2058CF2415ED85D10055506C /* EDAMUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMUserStore.h; sourceTree = "<group>"; };
+		2058CF2615ED85D10055506C /* evernote-sdk-ios-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "evernote-sdk-ios-Prefix.pch"; sourceTree = "<group>"; };
+		2058CF2715ED85D10055506C /* EvernoteNoteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteNoteStore.h; sourceTree = "<group>"; };
+		2058CF2915ED85D10055506C /* EvernoteSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteSDK.h; sourceTree = "<group>"; };
+		2058CF2B15ED85D10055506C /* EvernoteSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteSession.h; sourceTree = "<group>"; };
+		2058CF2D15ED85D10055506C /* EvernoteUserStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvernoteUserStore.h; sourceTree = "<group>"; };
+		2058CF3015ED85D10055506C /* ENAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENAPI.h; sourceTree = "<group>"; };
+		2058CF3215ED85D10055506C /* ENCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENCredentials.h; sourceTree = "<group>"; };
+		2058CF3415ED85D10055506C /* ENCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENCredentialStore.h; sourceTree = "<group>"; };
+		2058CF3615ED85D10055506C /* ENOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENOAuthViewController.h; sourceTree = "<group>"; };
+		2058CF7B15ED87760055506C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2058CE5115ED7FA40055506C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CF7C15ED87760055506C /* Security.framework in Frameworks */,
+				2058CE5915ED7FA40055506C /* UIKit.framework in Frameworks */,
+				2058CE5B15ED7FA40055506C /* Foundation.framework in Frameworks */,
+				2058CE5D15ED7FA40055506C /* CoreGraphics.framework in Frameworks */,
+				2058CEDF15ED84E60055506C /* libEvernoteAPI.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2058CE7415ED7FA40055506C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CE7A15ED7FA40055506C /* SenTestingKit.framework in Frameworks */,
+				2058CE7B15ED7FA40055506C /* UIKit.framework in Frameworks */,
+				2058CE7C15ED7FA40055506C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2058CE4915ED7FA40055506C = {
+			isa = PBXGroup;
+			children = (
+				2058CF7B15ED87760055506C /* Security.framework */,
+				2058CE5E15ED7FA40055506C /* Everfit */,
+				2058CE7F15ED7FA40055506C /* EverfitTests */,
+				2058CE5715ED7FA40055506C /* Frameworks */,
+				2058CE5515ED7FA40055506C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2058CE5515ED7FA40055506C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2058CE5415ED7FA40055506C /* Everfit.app */,
+				2058CE7815ED7FA40055506C /* EverfitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2058CE5715ED7FA40055506C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2058CE5815ED7FA40055506C /* UIKit.framework */,
+				2058CE5A15ED7FA40055506C /* Foundation.framework */,
+				2058CE5C15ED7FA40055506C /* CoreGraphics.framework */,
+				2058CE7915ED7FA40055506C /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2058CE5E15ED7FA40055506C /* Everfit */ = {
+			isa = PBXGroup;
+			children = (
+				2058CE6715ED7FA40055506C /* EverfitAppDelegate.h */,
+				2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */,
+				2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */,
+				2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */,
+				2058CE7015ED7FA40055506C /* EverfitViewController.h */,
+				2058CE7115ED7FA40055506C /* EverfitViewController.m */,
+				2058CE5F15ED7FA40055506C /* Supporting Files */,
+			);
+			path = Everfit;
+			sourceTree = "<group>";
+		};
+		2058CE5F15ED7FA40055506C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2058CED915ED84E60055506C /* LibEvernoteAPI */,
+				2058CE6015ED7FA40055506C /* Everfit-Info.plist */,
+				2058CE6115ED7FA40055506C /* InfoPlist.strings */,
+				2058CE6415ED7FA40055506C /* main.m */,
+				2058CE6615ED7FA40055506C /* Everfit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2058CE7F15ED7FA40055506C /* EverfitTests */ = {
+			isa = PBXGroup;
+			children = (
+				2058CE8515ED7FA50055506C /* EverfitTests.h */,
+				2058CE8615ED7FA50055506C /* EverfitTests.m */,
+				2058CE8015ED7FA50055506C /* Supporting Files */,
+			);
+			path = EverfitTests;
+			sourceTree = "<group>";
+		};
+		2058CE8015ED7FA50055506C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2058CE8115ED7FA50055506C /* EverfitTests-Info.plist */,
+				2058CE8215ED7FA50055506C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2058CED915ED84E60055506C /* LibEvernoteAPI */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEF015ED85D10055506C /* evernote-sdk-ios */,
+				2058CEDE15ED84E60055506C /* libEvernoteAPI.a */,
+			);
+			path = LibEvernoteAPI;
+			sourceTree = "<group>";
+		};
+		2058CEF015ED85D10055506C /* evernote-sdk-ios */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEF115ED85D10055506C /* 3rdParty */,
+				2058CF1A15ED85D10055506C /* EDAM */,
+				2058CF2615ED85D10055506C /* evernote-sdk-ios-Prefix.pch */,
+				2058CF2715ED85D10055506C /* EvernoteNoteStore.h */,
+				2058CF2915ED85D10055506C /* EvernoteSDK.h */,
+				2058CF2B15ED85D10055506C /* EvernoteSession.h */,
+				2058CF2D15ED85D10055506C /* EvernoteUserStore.h */,
+				2058CF2F15ED85D10055506C /* internal */,
+			);
+			path = "evernote-sdk-ios";
+			sourceTree = "<group>";
+		};
+		2058CEF115ED85D10055506C /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEF215ED85D10055506C /* cocoa-oauth */,
+				2058CEF815ED85D10055506C /* NSString+URLEncoding */,
+				2058CEFC15ED85D10055506C /* SSKeychain */,
+				2058CF0015ED85D10055506C /* Thrift */,
+			);
+			path = 3rdParty;
+			sourceTree = "<group>";
+		};
+		2058CEF215ED85D10055506C /* cocoa-oauth */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEF315ED85D10055506C /* GCOAuth.h */,
+				2058CEF615ED85D10055506C /* NSData+Base64.h */,
+			);
+			path = "cocoa-oauth";
+			sourceTree = "<group>";
+		};
+		2058CEF815ED85D10055506C /* NSString+URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEFA15ED85D10055506C /* NSString+URLEncoding.h */,
+			);
+			path = "NSString+URLEncoding";
+			sourceTree = "<group>";
+		};
+		2058CEFC15ED85D10055506C /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				2058CEFE15ED85D10055506C /* SSKeychain.h */,
+			);
+			path = SSKeychain;
+			sourceTree = "<group>";
+		};
+		2058CF0015ED85D10055506C /* Thrift */ = {
+			isa = PBXGroup;
+			children = (
+				2058CF0115ED85D10055506C /* LICENSE */,
+				2058CF0215ED85D10055506C /* protocol */,
+				2058CF0B15ED85D10055506C /* TApplicationException.h */,
+				2058CF0D15ED85D10055506C /* TException.h */,
+				2058CF0F15ED85D10055506C /* Thrift.h */,
+				2058CF1015ED85D10055506C /* TProcessor.h */,
+				2058CF1115ED85D10055506C /* TProcessorFactory.h */,
+				2058CF1215ED85D10055506C /* transport */,
+			);
+			path = Thrift;
+			sourceTree = "<group>";
+		};
+		2058CF0215ED85D10055506C /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				2058CF0315ED85D10055506C /* TBinaryProtocol.h */,
+				2058CF0515ED85D10055506C /* TProtocol.h */,
+				2058CF0615ED85D10055506C /* TProtocolException.h */,
+				2058CF0815ED85D10055506C /* TProtocolFactory.h */,
+				2058CF0915ED85D10055506C /* TProtocolUtil.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		2058CF1215ED85D10055506C /* transport */ = {
+			isa = PBXGroup;
+			children = (
+				2058CF1315ED85D10055506C /* THTTPClient.h */,
+				2058CF1515ED85D10055506C /* TMemoryBuffer.h */,
+				2058CF1715ED85D10055506C /* TTransport.h */,
+				2058CF1815ED85D10055506C /* TTransportException.h */,
+			);
+			path = transport;
+			sourceTree = "<group>";
+		};
+		2058CF1A15ED85D10055506C /* EDAM */ = {
+			isa = PBXGroup;
+			children = (
+				2058CF1B15ED85D10055506C /* EDAM.h */,
+				2058CF1C15ED85D10055506C /* EDAMErrors.h */,
+				2058CF1E15ED85D10055506C /* EDAMLimits.h */,
+				2058CF2015ED85D10055506C /* EDAMNoteStore.h */,
+				2058CF2215ED85D10055506C /* EDAMTypes.h */,
+				2058CF2415ED85D10055506C /* EDAMUserStore.h */,
+			);
+			path = EDAM;
+			sourceTree = "<group>";
+		};
+		2058CF2F15ED85D10055506C /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				2058CF3015ED85D10055506C /* ENAPI.h */,
+				2058CF3215ED85D10055506C /* ENCredentials.h */,
+				2058CF3415ED85D10055506C /* ENCredentialStore.h */,
+				2058CF3615ED85D10055506C /* ENOAuthViewController.h */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2058CE5315ED7FA40055506C /* Everfit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2058CE8A15ED7FA50055506C /* Build configuration list for PBXNativeTarget "Everfit" */;
+			buildPhases = (
+				2058CE5015ED7FA40055506C /* Sources */,
+				2058CE5115ED7FA40055506C /* Frameworks */,
+				2058CE5215ED7FA40055506C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Everfit;
+			productName = Everfit;
+			productReference = 2058CE5415ED7FA40055506C /* Everfit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2058CE7715ED7FA40055506C /* EverfitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2058CE8D15ED7FA50055506C /* Build configuration list for PBXNativeTarget "EverfitTests" */;
+			buildPhases = (
+				2058CE7315ED7FA40055506C /* Sources */,
+				2058CE7415ED7FA40055506C /* Frameworks */,
+				2058CE7515ED7FA40055506C /* Resources */,
+				2058CE7615ED7FA40055506C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2058CE7E15ED7FA40055506C /* PBXTargetDependency */,
+			);
+			name = EverfitTests;
+			productName = EverfitTests;
+			productReference = 2058CE7815ED7FA40055506C /* EverfitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2058CE4B15ED7FA40055506C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Everfit;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Swift Archer";
+			};
+			buildConfigurationList = 2058CE4E15ED7FA40055506C /* Build configuration list for PBXProject "Everfit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2058CE4915ED7FA40055506C;
+			productRefGroup = 2058CE5515ED7FA40055506C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2058CE5315ED7FA40055506C /* Everfit */,
+				2058CE7715ED7FA40055506C /* EverfitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2058CE5215ED7FA40055506C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CE6315ED7FA40055506C /* InfoPlist.strings in Resources */,
+				2058CE6C15ED7FA40055506C /* MainStoryboard_iPhone.storyboard in Resources */,
+				2058CE6F15ED7FA40055506C /* MainStoryboard_iPad.storyboard in Resources */,
+				2058CF4615ED85D10055506C /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2058CE7515ED7FA40055506C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CE8415ED7FA50055506C /* InfoPlist.strings in Resources */,
+				2058CF4715ED85D10055506C /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2058CE7615ED7FA40055506C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2058CE5015ED7FA40055506C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CE6515ED7FA40055506C /* main.m in Sources */,
+				2058CE6915ED7FA40055506C /* EverfitAppDelegate.m in Sources */,
+				2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2058CE7315ED7FA40055506C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2058CE8715ED7FA50055506C /* EverfitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2058CE7E15ED7FA40055506C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2058CE5315ED7FA40055506C /* Everfit */;
+			targetProxy = 2058CE7D15ED7FA40055506C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2058CE6115ED7FA40055506C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2058CE6215ED7FA40055506C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2058CE6B15ED7FA40055506C /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2058CE6E15ED7FA40055506C /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		2058CE8215ED7FA50055506C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2058CE8315ED7FA50055506C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2058CE8815ED7FA50055506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2058CE8915ED7FA50055506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2058CE8B15ED7FA50055506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Everfit/Everfit-Prefix.pch";
+				INFOPLIST_FILE = "Everfit/Everfit-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/EverfitWorkspace-fjvrcjpdyhsvsthedzrxfumjazbj/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/Everfit/LibEvernoteAPI\"",
+				);
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2058CE8C15ED7FA50055506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Everfit/Everfit-Prefix.pch";
+				INFOPLIST_FILE = "Everfit/Everfit-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/EverfitWorkspace-fjvrcjpdyhsvsthedzrxfumjazbj/Build/Products/Debug-iphoneos\"",
+					"\"$(SRCROOT)/Everfit/LibEvernoteAPI\"",
+				);
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2058CE8E15ED7FA50055506C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Everfit.app/Everfit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Everfit/Everfit-Prefix.pch";
+				INFOPLIST_FILE = "EverfitTests/EverfitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2058CE8F15ED7FA50055506C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Everfit.app/Everfit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Everfit/Everfit-Prefix.pch";
+				INFOPLIST_FILE = "EverfitTests/EverfitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2058CE4E15ED7FA40055506C /* Build configuration list for PBXProject "Everfit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2058CE8815ED7FA50055506C /* Debug */,
+				2058CE8915ED7FA50055506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2058CE8A15ED7FA50055506C /* Build configuration list for PBXNativeTarget "Everfit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2058CE8B15ED7FA50055506C /* Debug */,
+				2058CE8C15ED7FA50055506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2058CE8D15ED7FA50055506C /* Build configuration list for PBXNativeTarget "EverfitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2058CE8E15ED7FA50055506C /* Debug */,
+				2058CE8F15ED7FA50055506C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2058CE4B15ED7FA40055506C /* Project object */;
+}
