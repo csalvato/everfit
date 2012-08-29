@@ -25,7 +25,6 @@
             NSLog(@"Login Failure! :(");
         } else {
             NSLog(@"Login Success! :)");
-            NSLog(@"%@",[NSString generateUUIDString]); 
         } 
     }];
     

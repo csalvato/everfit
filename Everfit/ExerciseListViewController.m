@@ -13,15 +13,18 @@
 @interface ExerciseListViewController ()
 
 @property (nonatomic, strong) EDAMNotebook *notebook;
+@property (nonatomic, strong) NSArray *notes;
 
 @end
 
 @implementation ExerciseListViewController
 
 @synthesize notebook = _notebook;
+@synthesize notes = _notes;
 
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
 #pragma mark - Helper Functions
+
 
 
 // Creates a new default notebook with the value of REQUIRED_NOTEBOOK_NAME ("Everfit")
@@ -54,18 +57,45 @@
     return notebook;
 }
 
-// Checks to see if a notebook exists labelled "Everfit".  If it does not, the notebook will be created.  Once the notebook exists, it is set as a property of the controller for use in generating the table data.
+// Checks to see if a notebook exists labelled "Everfit".  If it does not, the notebook will be created.  Once the notebook exists, it is set as a property of the controller for use in generating the table data and the notes are retrieved and stored as a property.
 - (void) initializeEvernoteStore {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
-    
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
         NSUInteger everfitNotebookIndex = [self findIndexOfRequiredNotebook:notebooks];
+        // Store the notebook (and create it if necessary)
         if(everfitNotebookIndex == NSNotFound) {
+            NSLog(@"Creating Notebook...");
             self.notebook = [self createNewNotebook];
         } else {
+            NSLog(@"Using Existing Notebook...");
             self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
         }
-        NSLog(@"%@", self.notebook);
+        /*
+        // Run a query to get all of the notes from the notebook
+        EDAMNoteFilter *filter = [[EDAMNoteFilter alloc] initWithOrder:NoteSortOrder_CREATED 
+                                                             ascending:NO words:nil 
+                                                          notebookGuid:self.notebook.guid 
+                                                              tagGuids:nil //TODO: Should eventually find just tags in the Everfit category.
+                                                              timeZone:[[NSTimeZone defaultTimeZone] name] 
+                                                              inactive:NO];
+        // Get the notes count, and retrieve all of the notes with that count.
+        [noteStore findNoteCountsWithFilter:filter 
+                                  withTrash:NO
+                                    success:^(EDAMNoteCollectionCounts *counts) {
+                                        [noteStore findNotesWithFilter:filter 
+                                                                offset:0 
+                                                              maxNotes:10
+                                                               success:^(EDAMNoteList *list) {
+                                                                   NSLog(@"Successfully retrieved notes");
+                                                               } 
+                                                               failure:^(NSError *error) {
+                                                                   NSLog(@"Failed to retrieve notess");
+                                                               }];
+                                    } 
+                                    failure:^(NSError *error) {
+                                        NSLog(@"Error retrieving notes count");
+                                    }];
+         */
     } failure:^(NSError *error) {
         NSLog(@"Error listing notebooks...");
     }];
@@ -81,9 +111,12 @@
 
 // Checks to see if a notebook is the required notebook REQUIRED_NOTEBOOK_NAME ("Everfit")
 -(BOOL) isRequiredNotebook:(EDAMNotebook *) notebook {
-    if (notebook.name == REQUIRED_NOTEBOOK_NAME) {
+    NSLog(@"Testing notebook...");
+    if ([notebook.name isEqualToString:REQUIRED_NOTEBOOK_NAME]) {
+        NSLog(@"Correct Notebook: %@", notebook.name);
         return YES;
     } else {
+        NSLog(@"Incorrect Notebook: %@", notebook.name);
         return NO;
     }
 }
@@ -101,7 +134,7 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 0; 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
