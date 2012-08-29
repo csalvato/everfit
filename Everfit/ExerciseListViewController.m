@@ -22,10 +22,14 @@
 @synthesize notebook = _notebook;
 @synthesize notes = _notes;
 
+- (void)setNotes:(NSArray *)notes {
+    _notes = notes;
+    [self.tableView reloadData];
+    NSLog(@"Data Reloaded on tableView: %@", self.tableView);
+}
+
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
 #pragma mark - Helper Functions
-
-
 
 // Creates a new default notebook with the value of REQUIRED_NOTEBOOK_NAME ("Everfit")
 -(EDAMNotebook *) createNewNotebook {
@@ -60,6 +64,7 @@
 // Checks to see if a notebook exists labelled "Everfit".  If it does not, the notebook will be created.  Once the notebook exists, it is set as a property of the controller for use in generating the table data and the notes are retrieved and stored as a property.
 - (void) initializeEvernoteStore {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
         NSUInteger everfitNotebookIndex = [self findIndexOfRequiredNotebook:notebooks];
         // Store the notebook (and create it if necessary)
@@ -70,35 +75,43 @@
             NSLog(@"Using Existing Notebook...");
             self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
         }
-        /*
-        // Run a query to get all of the notes from the notebook
-        EDAMNoteFilter *filter = [[EDAMNoteFilter alloc] initWithOrder:NoteSortOrder_CREATED 
-                                                             ascending:NO words:nil 
-                                                          notebookGuid:self.notebook.guid 
-                                                              tagGuids:nil //TODO: Should eventually find just tags in the Everfit category.
-                                                              timeZone:[[NSTimeZone defaultTimeZone] name] 
-                                                              inactive:NO];
-        // Get the notes count, and retrieve all of the notes with that count.
-        [noteStore findNoteCountsWithFilter:filter 
-                                  withTrash:NO
-                                    success:^(EDAMNoteCollectionCounts *counts) {
-                                        [noteStore findNotesWithFilter:filter 
-                                                                offset:0 
-                                                              maxNotes:10
-                                                               success:^(EDAMNoteList *list) {
-                                                                   NSLog(@"Successfully retrieved notes");
-                                                               } 
-                                                               failure:^(NSError *error) {
-                                                                   NSLog(@"Failed to retrieve notess");
-                                                               }];
-                                    } 
-                                    failure:^(NSError *error) {
-                                        NSLog(@"Error retrieving notes count");
-                                    }];
-         */
+        
+     [self retrieveFitnessNotesData];
+    
     } failure:^(NSError *error) {
         NSLog(@"Error listing notebooks...");
     }];
+}
+
+// Refreshes/retrieve fitness notes data from the Evernote Note Store.
+-(void) retrieveFitnessNotesData {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
+    // Create a query to get all of the notes from the notebook
+    EDAMNoteFilter *filter = [[EDAMNoteFilter alloc] initWithOrder:NoteSortOrder_CREATED 
+                                                         ascending:NO 
+                                                             words:@"" 
+                                                      notebookGuid:self.notebook.guid 
+                                                          tagGuids:nil //TODO: Should eventually find just tags in the Everfit category.
+                                                          timeZone:[[NSTimeZone defaultTimeZone] name] 
+                                                          inactive:NO];
+    // Retrieve all of the notes
+    [noteStore findNotesWithFilter:filter 
+                            offset:0 
+                          maxNotes:[EDAMLimitsConstants EDAM_USER_NOTES_MAX]
+                           success:^(EDAMNoteList *list) {
+                               if( list.notesIsSet ) {
+                                   NSLog(@"Successfully retrieved notes");
+                                   self.notes = [list.notes copy];
+                               } else {
+                                   NSLog(@"Notes not set?  That is really strange..investigate..");
+                               }
+                               
+                           } 
+                           failure:^(NSError *error) {
+                               NSLog(@"Failed to retrieve notess");
+                           }
+     ];
 }
 
 // Finds the index of the required notebook in the array of Notebooks returned from Evernote.
@@ -128,28 +141,28 @@
     [self initializeEvernoteStore];
 }
 
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0; 
+    return 1; 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.notes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Exercise Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    EDAMNote *note = [self.notes objectAtIndex:indexPath.row];
+    cell.textLabel.text = note.title;
     
     return cell;
 }
