@@ -19,18 +19,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    [session authenticateWithViewController:self completionHandler:^(NSError *error) {
-        if (error || !session.isAuthenticated) {
-            // authentication failed :(
-            // show an alert, etc
-            NSLog(@"Failure! :(");
-        } else {
-            // authentication succeeded :)
-            // do something now that we're authenticated
-            NSLog(@"Success! :)"); 
-        } 
-    }];
+
 }
 
 - (void)viewDidUnload
