@@ -25,11 +25,21 @@
 @synthesize eventDates = _eventDates;
 @synthesize tableEntries = _tableEntries;
 
--(void)setSectionTitles:(NSArray *)eventDates {
+-(NSArray *)eventDates {
+    if( !_eventDates ) _eventDates = [NSArray array];
+    return _eventDates;
+}
+
+-(void)setEventDates:(NSArray *)eventDates {
     if( _eventDates != eventDates ) {
         _eventDates = eventDates;
         [self.tableView reloadData];
     }
+}
+
+-(NSDictionary *)tableEntries{
+    if( !_tableEntries ) _tableEntries = [NSDictionary dictionary];
+    return _tableEntries;
 }
 
 -(void)setTableEntries:(NSDictionary *)tableEntries {
@@ -42,7 +52,6 @@
 - (void)setNotes:(NSArray *)notes {
     _notes = notes;
     [self.tableView reloadData];
-    NSLog(@"Data Reloaded on tableView: %@", self.tableView);
 }
 
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
@@ -119,7 +128,7 @@
                            success:^(EDAMNoteList *list) {
                                if( list.notesIsSet ) {
                                    NSLog(@"Successfully retrieved notes");
-                                   self.tableEntries = [self createTableDataFromNotes:list.notes];
+                                   [self createTableDataFromNotes:list.notes];
                                } else {
                                    NSLog(@"Notes not set?  That is really strange..investigate..");
                                }
@@ -131,8 +140,8 @@
      ];
 }
 
-// Processes the notes from Evernote to create entries on the table
--(NSDictionary *) createTableDataFromNotes: (NSArray *)notes {
+// Processes the notes from Evernote to populate the properties that display as entries on the table
+-(void) createTableDataFromNotes: (NSArray *)notes {
     NSMutableDictionary *tableData = [NSMutableDictionary dictionary];
     for( EDAMNote *note in notes ) {
         //Create Date String for key-value pairing and section titles.
@@ -147,7 +156,7 @@
         } else {
             arrayForCellEntries = [NSMutableArray array];
             // Add the date string to an array of dates for ordered section titles.
-            NSMutableArray *newEventDatesArray = [NSMutableArray arrayWithArray:self.eventDates];
+            NSMutableArray *newEventDatesArray = [NSMutableArray array];
             [newEventDatesArray addObject:createdDate];
             //Make sure the array stays sorted
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" 
@@ -164,10 +173,11 @@
         [arrayForCellEntries addObject:note.title];
         
         //Add the object to the dictionary.
-        [tableData setObject:arrayForCellEntries forKey:createdDateAsString];
+        [tableData setObject:arrayForCellEntries forKey:createdDate];
+        NSLog(@"%@", tableData);
     }
     
-    return [tableData copy];
+    self.tableEntries = [tableData copy];
 }
 
 // Finds the index of the required notebook in the array of Notebooks returned from Evernote.
@@ -225,9 +235,9 @@
     static NSString *CellIdentifier = @"Exercise Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    EDAMNote *note = [self.notes objectAtIndex:indexPath.row];
-    cell.textLabel.text = note.title;
-    
+    NSArray *sectionData = [self.tableEntries objectForKey:[self.eventDates objectAtIndex:indexPath.section]];
+    cell.textLabel.text = [sectionData objectAtIndex:indexPath.row];
+    NSLog( @"Making a cell.." );
     return cell;
 }
 
