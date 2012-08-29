@@ -14,13 +14,21 @@
 
 @property (nonatomic, strong) EDAMNotebook *notebook;
 @property (nonatomic, strong) NSArray *notes;
-
+@property (nonatomic, strong) NSDictionary *tableEntries; // The key is the NSString for the section header, the value is an NSArray with NSStrings for the entries within that section.
 @end
 
 @implementation ExerciseListViewController
 
 @synthesize notebook = _notebook;
 @synthesize notes = _notes;
+@synthesize tableEntries = _tableEntries;
+
+-(void)setTableEntries:(NSDictionary *)tableEntries {
+    if( _tableEntries != tableEntries ) {
+        _tableEntries = tableEntries;
+        [self.tableView reloadData];
+    }
+}
 
 - (void)setNotes:(NSArray *)notes {
     _notes = notes;
@@ -102,7 +110,7 @@
                            success:^(EDAMNoteList *list) {
                                if( list.notesIsSet ) {
                                    NSLog(@"Successfully retrieved notes");
-                                   self.notes = [list.notes copy];
+                                   self.tableEntries = [self createTableDataFromNotes:list.notes];
                                } else {
                                    NSLog(@"Notes not set?  That is really strange..investigate..");
                                }
@@ -112,6 +120,34 @@
                                NSLog(@"Failed to retrieve notess");
                            }
      ];
+}
+
+// Processes the notes from Evernote to create entries on the table
+-(NSDictionary *) createTableDataFromNotes: (NSArray *)notes {
+    //Parse the dates out of the notes to create the section titles
+    NSMutableDictionary *tableData = [NSMutableDictionary dictionary];
+    for( EDAMNote *note in notes ) {
+        //Get the created date from the note's metadata
+        NSDate *createdDate = [NSDate dateWithTimeIntervalSince1970:(note.created/1000)];
+        NSString* createdDateAsString = [NSDateFormatter localizedStringFromDate:createdDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+        //If the date is in the dictionary, get a mutable copy of the NSArray stored for that date key
+        NSMutableArray *arrayForCellEntries;
+        if( [[tableData allKeys] containsObject:createdDateAsString] ) {
+            arrayForCellEntries = [tableData objectForKey:createdDateAsString];
+        } else {
+            //Else create a new mutable array for the date key.
+            arrayForCellEntries = [NSMutableArray array];
+        }
+            
+        
+        // Add the note's title to the array created/accessed above to save it.
+        [arrayForCellEntries addObject:note.title];
+        
+        //Add the object to the dictionary.
+        [tableData setObject:arrayForCellEntries forKey:createdDateAsString];
+    }
+    
+    return [tableData copy];
 }
 
 // Finds the index of the required notebook in the array of Notebooks returned from Evernote.
