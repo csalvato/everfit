@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) EDAMNotebook *notebook;
 @property (nonatomic, strong) NSArray *notes;
+@property (nonatomic, strong) NSArray *eventDates; //of NSDates holding the dates of the workout events
 @property (nonatomic, strong) NSDictionary *tableEntries; // The key is the NSString for the section header, the value is an NSArray with NSStrings for the entries within that section.
 @end
 
@@ -21,7 +22,15 @@
 
 @synthesize notebook = _notebook;
 @synthesize notes = _notes;
+@synthesize eventDates = _eventDates;
 @synthesize tableEntries = _tableEntries;
+
+-(void)setSectionTitles:(NSArray *)eventDates {
+    if( _eventDates != eventDates ) {
+        _eventDates = eventDates;
+        [self.tableView reloadData];
+    }
+}
 
 -(void)setTableEntries:(NSDictionary *)tableEntries {
     if( _tableEntries != tableEntries ) {
@@ -124,21 +133,32 @@
 
 // Processes the notes from Evernote to create entries on the table
 -(NSDictionary *) createTableDataFromNotes: (NSArray *)notes {
-    //Parse the dates out of the notes to create the section titles
     NSMutableDictionary *tableData = [NSMutableDictionary dictionary];
     for( EDAMNote *note in notes ) {
-        //Get the created date from the note's metadata
+        //Create Date String for key-value pairing and section titles.
         NSDate *createdDate = [NSDate dateWithTimeIntervalSince1970:(note.created/1000)];
-        NSString* createdDateAsString = [NSDateFormatter localizedStringFromDate:createdDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
-        //If the date is in the dictionary, get a mutable copy of the NSArray stored for that date key
+        NSString* createdDateAsString = [NSDateFormatter localizedStringFromDate:createdDate 
+                                                                       dateStyle:NSDateFormatterShortStyle 
+                                                                       timeStyle:NSDateFormatterNoStyle];
         NSMutableArray *arrayForCellEntries;
         if( [[tableData allKeys] containsObject:createdDateAsString] ) {
             arrayForCellEntries = [tableData objectForKey:createdDateAsString];
-        } else {
-            //Else create a new mutable array for the date key.
-            arrayForCellEntries = [NSMutableArray array];
-        }
             
+        } else {
+            arrayForCellEntries = [NSMutableArray array];
+            // Add the date string to an array of dates for ordered section titles.
+            NSMutableArray *newEventDatesArray = [NSMutableArray arrayWithArray:self.eventDates];
+            [newEventDatesArray addObject:createdDate];
+            //Make sure the array stays sorted
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" 
+                                                                             ascending:NO 
+                                                                            comparator:^NSComparisonResult(id obj1, id obj2) {
+                                                                                return [(NSDate *)obj1 compare:(NSDate *) obj2];
+                                                                            }
+                                                ];
+            [newEventDatesArray sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+            self.eventDates = newEventDatesArray;
+        }
         
         // Add the note's title to the array created/accessed above to save it.
         [arrayForCellEntries addObject:note.title];
@@ -179,17 +199,25 @@
 
 
 #pragma mark - Table view data source
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSDate *date = [self.eventDates objectAtIndex:section];
+    return [NSDateFormatter localizedStringFromDate:date
+                                          dateStyle:NSDateFormatterShortStyle 
+                                          timeStyle:NSDateFormatterNoStyle];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1; 
+    return [self.eventDates count]; 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.notes count];
+    NSDate *sectionDate = [self.eventDates objectAtIndex:section];
+    NSArray *sectionEntries = [self.tableEntries objectForKey:sectionDate];
+    return [sectionEntries count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
