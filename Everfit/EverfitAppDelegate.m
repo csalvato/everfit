@@ -8,6 +8,7 @@
 
 #import "EverfitAppDelegate.h"
 #import "EvernoteSession.h"
+#import "NSString+UUIDString.h"
 
 @implementation EverfitAppDelegate
 
@@ -23,7 +24,8 @@
         if (error || !session.isAuthenticated) {
             NSLog(@"Login Failure! :(");
         } else {
-            NSLog(@"Login Success! :)"); 
+            NSLog(@"Login Success! :)");
+            NSLog(@"%@",[NSString generateUUIDString]); 
         } 
     }];
     

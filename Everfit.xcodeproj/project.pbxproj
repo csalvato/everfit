@@ -26,6 +26,7 @@
 		2058CF4715ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
 		2058CF7C15ED87760055506C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CF7B15ED87760055506C /* Security.framework */; };
 		20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */; };
+		20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,8 @@
 		2058CF7B15ED87760055506C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		20D2CE2315EE1368003EB575 /* ExerciseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListViewController.h; sourceTree = "<group>"; };
 		20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
+		20E5621D15EE244400AB3CF6 /* NSString+UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUIDString.h"; sourceTree = "<group>"; };
+		20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUIDString.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 		2058CE5E15ED7FA40055506C /* Everfit */ = {
 			isa = PBXGroup;
 			children = (
+				20E5621D15EE244400AB3CF6 /* NSString+UUIDString.h */,
+				20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */,
 				2058CE6715ED7FA40055506C /* EverfitAppDelegate.h */,
 				2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */,
 				2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */,
@@ -440,6 +445,7 @@
 				2058CE6915ED7FA40055506C /* EverfitAppDelegate.m in Sources */,
 				2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */,
 				20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */,
+				20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

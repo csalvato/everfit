@@ -7,12 +7,93 @@
 //
 
 #import "ExerciseListViewController.h"
+#import "EvernoteNoteStore.h"
+#import "NSString+UUIDString.h"
 
 @interface ExerciseListViewController ()
+
+@property (nonatomic, strong) EDAMNotebook *notebook;
 
 @end
 
 @implementation ExerciseListViewController
+
+@synthesize notebook = _notebook;
+
+#define REQUIRED_NOTEBOOK_NAME @"Everfit"
+#pragma mark - Helper Functions
+
+
+// Creates a new default notebook with the value of REQUIRED_NOTEBOOK_NAME ("Everfit")
+-(EDAMNotebook *) createNewNotebook {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
+    NSDate *date = [NSDate date];
+    int32_t currentTime_32 = [date timeIntervalSince1970];
+    int64_t currentTime_64 = [date timeIntervalSince1970];
+    
+    EDAMNotebook *notebook = [[EDAMNotebook alloc] initWithGuid:[NSString generateUUIDString] 
+                                                           name:REQUIRED_NOTEBOOK_NAME 
+                                              updateSequenceNum:currentTime_32 
+                                                defaultNotebook:NO 
+                                                 serviceCreated:currentTime_64 
+                                                 serviceUpdated:currentTime_64 
+                                                     publishing:nil 
+                                                      published:NO 
+                                                          stack:nil 
+                                              sharedNotebookIds:nil 
+                                                sharedNotebooks:nil];
+    [noteStore createNotebook:notebook 
+                      success:^(EDAMNotebook *notebook) {
+        NSLog(@"Created Notebook successfully");
+    } 
+                      failure:^(NSError *error) {
+        NSLog(@"Notebook creation failed");
+    }];
+    
+    return notebook;
+}
+
+// Checks to see if a notebook exists labelled "Everfit".  If it does not, the notebook will be created.  Once the notebook exists, it is set as a property of the controller for use in generating the table data.
+- (void) initializeEvernoteStore {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
+    [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
+        NSUInteger everfitNotebookIndex = [self findIndexOfRequiredNotebook:notebooks];
+        if(everfitNotebookIndex == NSNotFound) {
+            self.notebook = [self createNewNotebook];
+        } else {
+            self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
+        }
+        NSLog(@"%@", self.notebook);
+    } failure:^(NSError *error) {
+        NSLog(@"Error listing notebooks...");
+    }];
+}
+
+// Finds the index of the required notebook in the array of Notebooks returned from Evernote.
+-(NSUInteger)findIndexOfRequiredNotebook:(NSArray *) notebooks {
+    return [notebooks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        EDAMNotebook *notebook = obj;
+        return [self isRequiredNotebook:notebook];
+    }];
+}
+
+// Checks to see if a notebook is the required notebook REQUIRED_NOTEBOOK_NAME ("Everfit")
+-(BOOL) isRequiredNotebook:(EDAMNotebook *) notebook {
+    if (notebook.name == REQUIRED_NOTEBOOK_NAME) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+#pragma mark - View Controller Life Cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self initializeEvernoteStore];
+}
 
 #pragma mark - Table view data source
 
