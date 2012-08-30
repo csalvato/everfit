@@ -15,20 +15,65 @@
 }
 
 +(NSString *)convertENMLToTextViewFormat:(NSString *)string {
+    NSString *strippedENTags = [string stripENNoteTags];
+    NSString *strippedDivs = [strippedENTags convertDivTagsToNewLines];
+    return [strippedDivs convertBRTagsToNewLines];
+}
+
+-(NSString *) convertDivTagsToNewLines {
     NSError *error = NULL;
     NSRegularExpression *regex = 
-    [NSRegularExpression regularExpressionWithPattern:@"<en-note>(.+)</en-note>" options:0 error:&error];
+    [NSRegularExpression regularExpressionWithPattern:@"<div>(.+)</div>" options:0 error:&error];
     
-    NSArray *matches = [regex matchesInString:string
+    NSArray *matches = [regex matchesInString:self
                                       options:0
-                                        range:NSMakeRange(0, [string length])
+                                        range:NSMakeRange(0, [self length])
+                        ];
+    
+    NSString *outputString = @"";
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = [match rangeAtIndex:1];
+        NSString *matchString = [self substringWithRange:matchRange];
+        outputString = [NSString stringWithFormat:@"%@%@\n", outputString,matchString];
+    }
+    
+    return outputString;
+}
+
+-(NSString *) convertBRTagsToNewLines {
+    NSError *error = NULL;
+    NSRegularExpression *regex = 
+    [NSRegularExpression regularExpressionWithPattern:@"<br(.+)/>" options:0 error:&error];
+    
+    NSArray *matches = [regex matchesInString:self
+                                      options:0
+                                        range:NSMakeRange(0, [self length])
+                        ];
+    
+    NSString *outputString = self;
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = [match range];
+        outputString = [outputString stringByReplacingCharactersInRange:matchRange withString:@""];
+    }
+    
+    return outputString;
+}
+
+
+-(NSString *)stripENNoteTags{
+    NSError *error = NULL;
+    NSRegularExpression *regex = 
+    [NSRegularExpression regularExpressionWithPattern:@"<en-note>((.|\n)+)</en-note>" options:0 error:&error];
+    
+    NSArray *matches = [regex matchesInString:self
+                                      options:0
+                                        range:NSMakeRange(0, [self length])
                         ];
     
     NSString *matchString;
     for (NSTextCheckingResult *match in matches) {
         NSRange matchRange = [match rangeAtIndex:1];
-        matchString = [string substringWithRange:matchRange];
-        NSLog(@"%@", matchString);
+        matchString = [self substringWithRange:matchRange];
     }
     
     return matchString;

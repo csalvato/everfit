@@ -227,7 +227,7 @@
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
                                   success:^(NSString *content) {
                                       destinationController.noteContentString = [NSString convertENMLToTextViewFormat:content];
-                                      NSLog(@"Retrieved Note Content");
+                                      NSLog(@"Retrieved Note Content: \n%@", destinationController.noteContentString);
                                   } 
                                   failure:^(NSError *error) {
                                       NSLog(@"Failed to get Note Content...investigate...");
