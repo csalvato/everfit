@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Exercise List View Controller-->
+        <!--Exercise List View Controller - Everfit-->
         <scene sceneID="KDh-Xk-eKK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9q-Db-mKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,7 +40,7 @@
                             <outlet property="delegate" destination="rZR-oe-mI2" id="Io8-s5-vVY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8cT-7N-mNX">
+                    <navigationItem key="navigationItem" title="Everfit" id="8cT-7N-mNX">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="xN1-k4-gwr">
                             <connections>
                                 <action selector="refresh:" destination="rZR-oe-mI2" id="j6x-bT-1iQ"/>
@@ -182,19 +182,6 @@
             <point key="canvasLocation" x="409" y="266"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ExerciseListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
-        </class>
-        <class className="NoteContentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteContentViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noteContent" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="noteTitle" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

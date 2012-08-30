@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (ENML)
-+(NSString *)encapulateStringInENML:(NSString *)string;
-+(NSString *)convertENMLToTextViewFormat:(NSString *)string;
+-(NSString *)convertTextViewFormatToENML;
+-(NSString *)convertENMLToTextViewFormat;
 @end

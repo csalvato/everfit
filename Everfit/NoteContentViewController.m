@@ -57,7 +57,7 @@
 
     EDAMNote *note = [[EDAMNote alloc] initWithGuid:[NSString generateUUIDString] 
                                               title:self.noteTitleString 
-                                            content:[NSString encapulateStringInENML:self.noteContentString]
+                                            content:[self.noteContentString convertTextViewFormatToENML]
                                         contentHash:nil 
                                       contentLength:0
                                             created:currentTime_64*1000 
@@ -83,7 +83,7 @@
 -(void) updateExistingNote {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
-    self.note.content = [NSString encapulateStringInENML:self.noteContentString];
+    self.note.content = [self.noteContentString convertTextViewFormatToENML];
     
     [noteStore updateNote:self.note
                   success:^(EDAMNote *note) {

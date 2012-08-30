@@ -10,12 +10,67 @@
 
 @implementation NSString (ENML)
 
-+(NSString *)encapulateStringInENML:(NSString *)string {
-    return [NSString stringWithFormat: @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note>%@</en-note>", string];
+#pragma mark - Text View Format to ENML
+-(NSString *)convertTextViewFormatToENML {
+    NSString *addedBRs = [self convertDoubleNewLinesToBR];
+    NSString *addedDivs = [addedBRs convertNewLinesToDivs];
+    return [addedDivs encapulateStringInENML];
 }
 
-+(NSString *)convertENMLToTextViewFormat:(NSString *)string {
-    NSString *strippedENTags = [string stripENNoteTags];
+-(NSString *)convertDoubleNewLinesToBR {
+    NSError *error = NULL;
+    NSRegularExpression *regex = 
+    [NSRegularExpression regularExpressionWithPattern:@"\n(\n)" options:0 error:&error];
+    
+    NSArray *matches = [regex matchesInString:self
+                                      options:0
+                                        range:NSMakeRange(0, [self length])
+                        ];
+    
+    NSString *outputString = self;
+    matches = [[matches reverseObjectEnumerator] allObjects];
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = [match rangeAtIndex:1];
+        outputString = [outputString stringByReplacingCharactersInRange:matchRange withString:@"<br clear=\"none\"/>\n"];
+    }
+    
+    return outputString;
+}
+
+-(NSString *)convertNewLinesToDivs {
+    NSError *error = NULL;
+    NSRegularExpression *regex = 
+    [NSRegularExpression regularExpressionWithPattern:@"()(.+)(\n|$)" options:0 error:&error];
+    
+    NSArray *matches = [regex matchesInString:self
+                                      options:0
+                                        range:NSMakeRange(0, [self length])
+                        ];
+    
+    NSString *outputString = self;
+    matches = [[matches reverseObjectEnumerator] allObjects];
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = [match rangeAtIndex:3];
+        NSString *matchString = [self substringWithRange:matchRange];
+        outputString = [outputString stringByReplacingCharactersInRange:matchRange withString:[@"</div>" stringByAppendingString:matchString]];
+        
+        
+        matchRange = [match rangeAtIndex:1];
+        matchString = [self substringWithRange:matchRange];
+        outputString = [outputString stringByReplacingCharactersInRange:matchRange withString:[matchString stringByAppendingString:@"<div>"]];
+    }
+    
+    return outputString;
+}
+
+-(NSString *)encapulateStringInENML {
+    return [NSString stringWithFormat: @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n<en-note>%@</en-note>", self];
+}
+
+#pragma mark - ENML to Text View Format
+
+-(NSString *)convertENMLToTextViewFormat {
+    NSString *strippedENTags = [self stripENNoteTags];
     NSString *strippedDivs = [strippedENTags convertDivTagsToNewLines];
     return [strippedDivs convertBRTagsToNewLines];
 }
@@ -78,5 +133,7 @@
     
     return matchString;
 }
+
+
 
 @end
