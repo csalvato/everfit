@@ -33,6 +33,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="qMG-0s-zky" kind="push" identifier="View Exercise" id="5AP-iO-hPQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -111,21 +114,12 @@
             <point key="canvasLocation" x="-569" y="-27"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ExerciseListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
-        </class>
-        <class className="WorkoutDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="workoutDetails" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="workoutTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5AP-iO-hPQ"/>
+    </inferredMetricsTieBreakers>
 </document>
