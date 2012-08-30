@@ -9,6 +9,7 @@
 #import "ExerciseListViewController.h"
 #import "EvernoteNoteStore.h"
 #import "NSString+UUIDString.h"
+#import "WorkoutDetailsViewController.h"
 
 @interface ExerciseListViewController ()
 
@@ -219,9 +220,11 @@
 }
 
 #define SEGUE_ADD_EXERCISE @"Add Exercise"
+#define SEGUE_VIEW_EXERCISE @"View Exercise"
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
-        NSLog(@"%@", segue.destinationViewController);
+    if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
+        WorkoutDetailsViewController *destinationController = segue.destinationViewController;
+        //Handle Exercise Viewing
     }
 }
 

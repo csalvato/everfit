@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *workoutTitle;
 @property (weak, nonatomic) IBOutlet UITextView *workoutDetails;
+@property (strong, nonatomic) NSString *workoutTitleString;
+@property (strong, nonatomic) NSString *workoutDetailsString;
 
 @end

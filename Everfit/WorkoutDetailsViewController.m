@@ -13,13 +13,32 @@
 @end
 
 @implementation WorkoutDetailsViewController
-@synthesize workoutTitle;
-@synthesize workoutDetails;
+@synthesize workoutTitle = _workoutTitle;
+@synthesize workoutDetails = _workoutDetails;
+@synthesize workoutTitleString = _workoutTitleString;
+@synthesize workoutDetailsString = _workoutDetailsString;
 
 
+#pragma mark - Helper Functions
+//Sets the text of the workoutDetails Text Field
+-(void) setWorkoutDetailsText:(NSString *)workoutDetailsText {
+    if(workoutDetailsText) self.workoutDetails.text = workoutDetailsText;
+}
+//Sets the text of the workoutTitle Text Field
+-(void) setWorkoutTitleText:(NSString *)workoutTitleText {
+    if(workoutTitleText) self.workoutTitle.text = workoutTitleText;
+}
+
+
+#pragma mark - View Controller Life Cycle
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return !(UIDeviceOrientationPortraitUpsideDown == interfaceOrientation);
+}
+
+-(void)viewDidLoad {
+    [self setWorkoutTitleText:self.workoutTitleString];
+    [self setWorkoutDetailsText:self.workoutDetailsString];
 }
 
 - (void)viewDidUnload {
