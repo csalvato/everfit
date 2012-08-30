@@ -59,11 +59,11 @@
             </objects>
             <point key="canvasLocation" x="-102" y="-27"/>
         </scene>
-        <!--Workout Details View Controller-->
+        <!--Note Content View Controller-->
         <scene sceneID="9Up-hC-EHg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHg-9P-aGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="qMG-0s-zky" customClass="WorkoutDetailsViewController" sceneMemberID="viewController">
+                <viewController id="qMG-0s-zky" customClass="NoteContentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wim-Kx-UTT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

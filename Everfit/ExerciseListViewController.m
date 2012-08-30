@@ -9,7 +9,7 @@
 #import "ExerciseListViewController.h"
 #import "EvernoteNoteStore.h"
 #import "NSString+UUIDString.h"
-#import "WorkoutDetailsViewController.h"
+#import "NoteContentViewController.h"
 
 @interface ExerciseListViewController ()
 
@@ -219,7 +219,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
         EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
-        WorkoutDetailsViewController *destinationController = segue.destinationViewController;
+        NoteContentViewController *destinationController = segue.destinationViewController;
         destinationController.noteTitleString = self.lastSelectedNote.title;
         destinationController.isNewNote = NO;
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
