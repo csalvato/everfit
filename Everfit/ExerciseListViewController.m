@@ -10,6 +10,7 @@
 #import "EvernoteNoteStore.h"
 #import "NSString+UUIDString.h"
 #import "NoteContentViewController.h"
+#import "NSString+ENML.h"
 
 @interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 
@@ -225,8 +226,8 @@
         destinationController.noteTitleString = self.lastSelectedNote.title;
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
                                   success:^(NSString *content) {
-                                      NSLog(@"Retrieved Note Content: %@", content);
-                                      destinationController.noteContentString = content;
+                                      destinationController.noteContentString = [NSString convertENMLToTextViewFormat:content];
+                                      NSLog(@"Retrieved Note Content");
                                   } 
                                   failure:^(NSError *error) {
                                       NSLog(@"Failed to get Note Content...investigate...");

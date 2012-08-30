@@ -9,7 +9,7 @@
 #import "NoteContentViewController.h"
 #import "EvernoteNoteStore.h"
 #import "NSString+UUIDString.h"
-#import "NSString+EncapsulateInENML.h"
+#import "NSString+ENML.h"
 
 @interface NoteContentViewController () <UITextFieldDelegate, UITextViewDelegate>
 

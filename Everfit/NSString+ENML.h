@@ -10,4 +10,5 @@
 
 @interface NSString (ENML)
 +(NSString *)encapulateStringInENML:(NSString *)string;
++(NSString *)convertENMLToTextViewFormat:(NSString *)string;
 @end
