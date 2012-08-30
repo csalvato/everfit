@@ -33,7 +33,7 @@
 -(void)setEventDates:(NSArray *)eventDates {
     if( _eventDates != eventDates ) {
         _eventDates = eventDates;
-        [self.tableView reloadData];
+        //[self.tableView reloadData];
     }
 }
 
@@ -142,6 +142,10 @@
 
 // Processes the notes from Evernote to populate the properties that display as entries on the table
 -(void) createTableDataFromNotes: (NSArray *)notes {
+    //Clear existing table data so that the table is reloaded from Evernote query.
+    self.tableEntries = nil;
+    self.eventDates = nil;
+    
     NSMutableDictionary *tableData = [NSMutableDictionary dictionary];
     for( EDAMNote *note in notes ) {
         //Create Date String for key-value pairing and section titles.
@@ -157,12 +161,15 @@
             arrayForCellEntries = [NSMutableArray array];
             // Add the date string to an array of dates for ordered section titles.
             NSMutableArray *newEventDatesArray = [NSMutableArray array];
-            [newEventDatesArray addObject:createdDate];
+            if(self.eventDates) newEventDatesArray = [self.eventDates mutableCopy];
+            
+            [newEventDatesArray addObject:createdDateAsString];
             //Make sure the array stays sorted
             NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self" 
                                                                              ascending:NO 
                                                                             comparator:^NSComparisonResult(id obj1, id obj2) {
-                                                                                return [(NSDate *)obj1 compare:(NSDate *) obj2];
+                                                                                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                                                                                return [[formatter dateFromString:obj1] compare:[formatter dateFromString:obj2]];
                                                                             }
                                                 ];
             [newEventDatesArray sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
@@ -173,8 +180,7 @@
         [arrayForCellEntries addObject:note.title];
         
         //Add the object to the dictionary.
-        [tableData setObject:arrayForCellEntries forKey:createdDate];
-        NSLog(@"%@", tableData);
+        [tableData setObject:arrayForCellEntries forKey:createdDateAsString];
     }
     
     self.tableEntries = [tableData copy];
@@ -207,13 +213,16 @@
     [self initializeEvernoteStore];
 }
 
+#pragma mark - Target Action
+
+- (IBAction)refresh:(UIBarButtonItem *)sender {
+    [self initializeEvernoteStore];
+}
+
 
 #pragma mark - Table view data source
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSDate *date = [self.eventDates objectAtIndex:section];
-    return [NSDateFormatter localizedStringFromDate:date
-                                          dateStyle:NSDateFormatterShortStyle 
-                                          timeStyle:NSDateFormatterNoStyle];
+    return [self.eventDates objectAtIndex:section];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -225,7 +234,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSDate *sectionDate = [self.eventDates objectAtIndex:section];
+    NSString *sectionDate = [self.eventDates objectAtIndex:section];
     NSArray *sectionEntries = [self.tableEntries objectForKey:sectionDate];
     return [sectionEntries count];
 }

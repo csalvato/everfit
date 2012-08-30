@@ -41,6 +41,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="8cT-7N-mNX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="xN1-k4-gwr">
+                            <connections>
+                                <action selector="refresh:" destination="rZR-oe-mI2" id="j6x-bT-1iQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="735-si-g6s">
                             <connections>
                                 <segue destination="qMG-0s-zky" kind="push" identifier="Add Exercise" id="XTb-1j-Ies"/>
