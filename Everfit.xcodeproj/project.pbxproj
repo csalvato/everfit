@@ -25,6 +25,7 @@
 		2058CF4615ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
 		2058CF4715ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
 		2058CF7C15ED87760055506C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CF7B15ED87760055506C /* Security.framework */; };
+		2060B6D115EF810C007DA32D /* WorkoutDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2060B6D015EF810C007DA32D /* WorkoutDetailsViewController.m */; };
 		20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */; };
 		20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,8 @@
 		2058CF3415ED85D10055506C /* ENCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENCredentialStore.h; sourceTree = "<group>"; };
 		2058CF3615ED85D10055506C /* ENOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENOAuthViewController.h; sourceTree = "<group>"; };
 		2058CF7B15ED87760055506C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2060B6CF15EF810C007DA32D /* WorkoutDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutDetailsViewController.h; sourceTree = "<group>"; };
+		2060B6D015EF810C007DA32D /* WorkoutDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutDetailsViewController.m; sourceTree = "<group>"; };
 		20D2CE2315EE1368003EB575 /* ExerciseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListViewController.h; sourceTree = "<group>"; };
 		20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
 		20E5621D15EE244400AB3CF6 /* NSString+UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUIDString.h"; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				2058CE6715ED7FA40055506C /* EverfitAppDelegate.h */,
 				2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */,
 				2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */,
+				2060B6CF15EF810C007DA32D /* WorkoutDetailsViewController.h */,
+				2060B6D015EF810C007DA32D /* WorkoutDetailsViewController.m */,
 				20D2CE2315EE1368003EB575 /* ExerciseListViewController.h */,
 				20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */,
 				2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */,
@@ -446,6 +451,7 @@
 				2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */,
 				20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */,
 				20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */,
+				2060B6D115EF810C007DA32D /* WorkoutDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

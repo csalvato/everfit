@@ -208,9 +208,21 @@
 
 #pragma mark - View Controller Life Cycle
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+	return !(UIDeviceOrientationPortraitUpsideDown == interfaceOrientation);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeEvernoteStore];
+}
+
+#define SEGUE_ADD_EXERCISE @"Add Exercise"
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
+        NSLog(@"%@", segue.destinationViewController);
+    }
 }
 
 #pragma mark - Target Action
