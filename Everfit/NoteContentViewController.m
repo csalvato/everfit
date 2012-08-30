@@ -7,6 +7,9 @@
 //
 
 #import "NoteContentViewController.h"
+#import "EvernoteNoteStore.h"
+#import "NSString+UUIDString.h"
+#import "NSString+EncapsulateInENML.h"
 
 @interface NoteContentViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -103,6 +106,44 @@
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender {
     [self.delegate modalNoteContentViewControllerDidFinish:self];
 }
+
+- (IBAction)savePressed:(UIBarButtonItem *)sender {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
+    //Create the note to be added/updated
+    NSDate *date = [NSDate date];
+    int64_t currentTime_64 = [date timeIntervalSince1970];
+    EDAMNote *note = [[EDAMNote alloc] initWithGuid:[NSString generateUUIDString] 
+                                              title:self.noteTitleString 
+                                            content:[NSString encapulateStringInENML:self.noteContentString]
+                                        contentHash:nil 
+                                      contentLength:0
+                                            created:currentTime_64*1000 
+                                            updated:currentTime_64 *1000
+                                            deleted:0 
+                                             active:YES 
+                                  updateSequenceNum:0 
+                                       notebookGuid:[[self.delegate notebookForModalNoteContentViewController] guid] 
+                                           tagGuids:nil 
+                                          resources:nil 
+                                         attributes:nil 
+                                           tagNames:nil];
+    if(self.isNewNote) {
+        //Create new note...
+        [noteStore createNote:note 
+                      success:^(EDAMNote *note) {
+                          NSLog(@"Successfully created note!");
+                      } 
+                      failure:^(NSError *error) {
+                          NSLog(@"Note creation failed!");
+                      }]; 
+    } else {
+        //Get existing note
+        //Update existing note
+    }
+    [self.delegate modalNoteContentViewControllerDidFinish:self];
+}
+
 
 
 @end

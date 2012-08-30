@@ -310,4 +310,8 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+-(EDAMNotebook *)notebookForModalNoteContentViewController {
+    return self.notebook;
+}
+
 @end

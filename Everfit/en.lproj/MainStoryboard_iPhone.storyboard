@@ -151,7 +151,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nOs-2E-iEv"/>
-                                    <barButtonItem enabled="NO" systemItem="save" id="Om0-Dv-nQ7"/>
+                                    <barButtonItem enabled="NO" systemItem="save" id="Om0-Dv-nQ7">
+                                        <connections>
+                                            <action selector="savePressed:" destination="wl0-3r-vtf" id="a3V-n8-w7O"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -170,6 +174,19 @@
             <point key="canvasLocation" x="365" y="458"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ExerciseListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
+        </class>
+        <class className="NoteContentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteContentViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noteContent" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="noteTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EvernoteSDK.h"
 
 @class NoteContentViewController;
 
 @protocol ModalNoteContentViewControllerDelegate
 -(void)modalNoteContentViewControllerDidFinish:(NoteContentViewController *)sender;
+-(EDAMNotebook *)notebookForModalNoteContentViewController;
 @end
 
 @interface NoteContentViewController : UIViewController
