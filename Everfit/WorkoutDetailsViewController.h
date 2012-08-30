@@ -10,4 +10,7 @@
 
 @interface WorkoutDetailsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *workoutTitle;
+@property (weak, nonatomic) IBOutlet UITextView *workoutDetails;
+
 @end

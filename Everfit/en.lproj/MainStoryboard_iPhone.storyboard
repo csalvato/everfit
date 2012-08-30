@@ -56,11 +56,11 @@
             </objects>
             <point key="canvasLocation" x="-102" y="-27"/>
         </scene>
-        <!--View Controller-->
+        <!--Workout Details View Controller-->
         <scene sceneID="9Up-hC-EHg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHg-9P-aGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="qMG-0s-zky" sceneMemberID="viewController">
+                <viewController id="qMG-0s-zky" customClass="WorkoutDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wim-Kx-UTT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -85,6 +85,10 @@
                     <navigationItem key="navigationItem" id="pOj-bq-c7P">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="YbZ-o5-WB1"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="workoutDetails" destination="4PU-0y-tNh" id="cVp-RZ-ALD"/>
+                        <outlet property="workoutTitle" destination="Usd-cL-vJl" id="IJD-b0-cca"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="381" y="-36"/>
@@ -111,6 +115,13 @@
     <classes>
         <class className="ExerciseListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
+        </class>
+        <class className="WorkoutDetailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WorkoutDetailsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="workoutDetails" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="workoutTitle" candidateClass="UITextField"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -13,6 +13,8 @@
 @end
 
 @implementation WorkoutDetailsViewController
+@synthesize workoutTitle;
+@synthesize workoutDetails;
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -20,4 +22,9 @@
 	return !(UIDeviceOrientationPortraitUpsideDown == interfaceOrientation);
 }
 
+- (void)viewDidUnload {
+    [self setWorkoutTitle:nil];
+    [self setWorkoutDetails:nil];
+    [super viewDidUnload];
+}
 @end
