@@ -113,7 +113,7 @@
     [noteStore updateNote:self.note
                   success:^(EDAMNote *note) {
                       NSLog(@"Note updated successfully!");
-                      //If this is modal, can send the signal that we are done
+                      //Can send the signal that we are done to the delegate/presenting view controller
                       [self.delegate modalNoteContentViewControllerDidFinish:self];
                       
                       //If not modal, replace last bar button (spinner) item with Save button

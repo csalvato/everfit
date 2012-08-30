@@ -229,6 +229,8 @@
 #define SEGUE_VIEW_EXERCISE @"View Exercise"
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NoteContentViewController *destinationController = segue.destinationViewController;
+    destinationController.delegate = self;
+    
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
         destinationController.note = self.lastSelectedNote;
 
@@ -244,7 +246,7 @@
                                   }
          ];
     } else if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
-        destinationController.delegate = self;
+        //Nothing particular needs to happen...
     }
 }
 
