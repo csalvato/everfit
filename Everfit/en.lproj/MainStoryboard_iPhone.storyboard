@@ -33,9 +33,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="qMG-0s-zky" kind="push" identifier="View Exercise" id="5AP-iO-hPQ"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -55,6 +52,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="qMG-0s-zky" kind="push" identifier="View Exercise" id="nIv-2h-9oO"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-102" y="-27"/>
@@ -120,6 +120,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5AP-iO-hPQ"/>
+        <segue reference="nIv-2h-9oO"/>
     </inferredMetricsTieBreakers>
 </document>

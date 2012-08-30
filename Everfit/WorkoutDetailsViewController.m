@@ -18,6 +18,15 @@
 @synthesize workoutTitleString = _workoutTitleString;
 @synthesize workoutDetailsString = _workoutDetailsString;
 
+-(void)setWorkoutTitleString:(NSString *)workoutTitleString {
+    _workoutTitleString = workoutTitleString;
+    [self setWorkoutTitleText:workoutTitleString];
+}
+
+-(void)setWorkoutDetailsString:(NSString *)workoutDetailsString {
+    _workoutDetailsString = workoutDetailsString;
+    [self setWorkoutDetailsText:workoutDetailsString];
+}
 
 #pragma mark - Helper Functions
 //Sets the text of the workoutDetails Text Field

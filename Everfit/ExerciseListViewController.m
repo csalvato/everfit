@@ -112,7 +112,7 @@
     // Create a query to get all of the notes from the notebook
     EDAMNoteFilter *filter = [[EDAMNoteFilter alloc] initWithOrder:NoteSortOrder_CREATED 
                                                          ascending:NO 
-                                                             words:@"" 
+                                                             words:NULL 
                                                       notebookGuid:self.notebook.guid 
                                                           tagGuids:nil //TODO: Should eventually find just tags in the Everfit category.
                                                           timeZone:[[NSTimeZone defaultTimeZone] name] 
@@ -173,7 +173,7 @@
         }
         
         // Add the note's title to the array created/accessed above to save it.
-        [arrayForCellEntries addObject:note.title];
+        [arrayForCellEntries addObject:note];
         
         //Add the object to the dictionary.
         [tableData setObject:arrayForCellEntries forKey:createdDateAsString];
@@ -218,8 +218,18 @@
 #define SEGUE_VIEW_EXERCISE @"View Exercise"
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
+        EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
         WorkoutDetailsViewController *destinationController = segue.destinationViewController;
-        //Handle Exercise Viewing
+        destinationController.workoutTitleString = self.lastSelectedNote.title;
+        [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
+                                  success:^(NSString *content) {
+                                      NSLog(@"Retrieved Note Content: %@", content);
+                                      destinationController.workoutDetailsString = content;
+                                  } 
+                                  failure:^(NSError *error) {
+                                      NSLog(@"Failed to get Note Content...investigate...");
+                                  }
+         ];
     }
 }
 
@@ -255,7 +265,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSArray *sectionData = [self.tableEntries objectForKey:[self.eventDates objectAtIndex:indexPath.section]];
-    cell.textLabel.text = [sectionData objectAtIndex:indexPath.row];
+    EDAMNote *noteAtRow = [sectionData objectAtIndex:indexPath.row];
+    cell.textLabel.text = noteAtRow.title;
     NSLog( @"Making a cell.." );
     return cell;
 }
@@ -284,7 +295,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Selected a row...");
+    NSArray *sectionData = [self.tableEntries objectForKey:[self.eventDates objectAtIndex:indexPath.section]];
+    self.lastSelectedNote = [sectionData objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:SEGUE_VIEW_EXERCISE sender:self];
 }
 
 @end
