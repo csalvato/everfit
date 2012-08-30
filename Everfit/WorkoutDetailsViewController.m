@@ -8,34 +8,35 @@
 
 #import "WorkoutDetailsViewController.h"
 
-@interface WorkoutDetailsViewController ()
+@interface WorkoutDetailsViewController () <UITextFieldDelegate>
 
 @end
 
 @implementation WorkoutDetailsViewController
-@synthesize workoutTitle = _workoutTitle;
-@synthesize workoutDetails = _workoutDetails;
-@synthesize workoutTitleString = _workoutTitleString;
-@synthesize workoutDetailsString = _workoutDetailsString;
+@synthesize noteTitle = _noteTitle;
+@synthesize noteDetails = _noteDetails;
+@synthesize noteTitleString = _noteTitleString;
+@synthesize noteDetailsString = _noteDetailsString;
+@synthesize isNewNote = _isNewNote;
 
--(void)setWorkoutTitleString:(NSString *)workoutTitleString {
-    _workoutTitleString = workoutTitleString;
-    [self setWorkoutTitleText:workoutTitleString];
+-(void)setNoteTitleString:(NSString *)noteTitleString {
+    _noteTitleString = noteTitleString;
+    [self setNoteTitleText:noteTitleString];
 }
 
--(void)setWorkoutDetailsString:(NSString *)workoutDetailsString {
-    _workoutDetailsString = workoutDetailsString;
-    [self setWorkoutDetailsText:workoutDetailsString];
+-(void)setNoteDetailsString:(NSString *)noteDetailsString {
+    _noteDetailsString = noteDetailsString;
+    [self setNoteDetailsText:noteDetailsString];
 }
 
 #pragma mark - Helper Functions
 //Sets the text of the workoutDetails Text Field
--(void) setWorkoutDetailsText:(NSString *)workoutDetailsText {
-    if(workoutDetailsText) self.workoutDetails.text = workoutDetailsText;
+-(void) setNoteDetailsText:(NSString *)noteDetailsText {
+    if(noteDetailsText) self.noteDetails.text = noteDetailsText;
 }
 //Sets the text of the workoutTitle Text Field
--(void) setWorkoutTitleText:(NSString *)workoutTitleText {
-    if(workoutTitleText) self.workoutTitle.text = workoutTitleText;
+-(void) setNoteTitleText:(NSString *)noteTitleText {
+    if(noteTitleText) self.noteTitle.text = noteTitleText;
 }
 
 
@@ -46,13 +47,21 @@
 }
 
 -(void)viewDidLoad {
-    [self setWorkoutTitleText:self.workoutTitleString];
-    [self setWorkoutDetailsText:self.workoutDetailsString];
+    [self setNoteTitleText:self.noteTitleString];
+    [self setNoteDetailsText:self.noteDetailsString];
+    self.noteTitle.delegate = self;
 }
 
 - (void)viewDidUnload {
-    [self setWorkoutTitle:nil];
-    [self setWorkoutDetails:nil];
+    [self setNoteTitle:nil];
+    [self setNoteDetails:nil];
     [super viewDidUnload];
 }
+
+#pragma mark - Text Field Delegate
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end

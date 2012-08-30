@@ -10,9 +10,10 @@
 
 @interface WorkoutDetailsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *workoutTitle;
-@property (weak, nonatomic) IBOutlet UITextView *workoutDetails;
-@property (strong, nonatomic) NSString *workoutTitleString;
-@property (strong, nonatomic) NSString *workoutDetailsString;
+@property (weak, nonatomic) IBOutlet UITextField *noteTitle;
+@property (weak, nonatomic) IBOutlet UITextView *noteDetails;
+@property (strong, nonatomic) NSString *noteTitleString;
+@property (strong, nonatomic) NSString *noteDetailsString;
+@property (nonatomic) BOOL isNewNote;
 
 @end

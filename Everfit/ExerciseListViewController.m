@@ -220,11 +220,12 @@
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
         EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
         WorkoutDetailsViewController *destinationController = segue.destinationViewController;
-        destinationController.workoutTitleString = self.lastSelectedNote.title;
+        destinationController.noteTitleString = self.lastSelectedNote.title;
+        destinationController.isNewNote = NO;
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
                                   success:^(NSString *content) {
                                       NSLog(@"Retrieved Note Content: %@", content);
-                                      destinationController.workoutDetailsString = content;
+                                      destinationController.noteDetailsString = content;
                                   } 
                                   failure:^(NSError *error) {
                                       NSLog(@"Failed to get Note Content...investigate...");

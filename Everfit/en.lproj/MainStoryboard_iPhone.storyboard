@@ -88,8 +88,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="YbZ-o5-WB1"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="workoutDetails" destination="4PU-0y-tNh" id="cVp-RZ-ALD"/>
-                        <outlet property="workoutTitle" destination="Usd-cL-vJl" id="IJD-b0-cca"/>
+                        <outlet property="noteDetails" destination="4PU-0y-tNh" id="Bv4-0r-L5B"/>
+                        <outlet property="noteTitle" destination="Usd-cL-vJl" id="Jle-nZ-f9N"/>
                     </connections>
                 </viewController>
             </objects>
