@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class NoteContentViewController;
+
+@protocol ModalNoteContentViewControllerDelegate
+-(void)modalNoteContentViewControllerDidFinish:(NoteContentViewController *)sender;
+@end
+
 @interface NoteContentViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *noteTitle;
