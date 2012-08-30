@@ -19,6 +19,7 @@
 @interface NoteContentViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIToolbar *topToolbar;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingNoteSpinner;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitle;
 @property (weak, nonatomic) IBOutlet UITextView *noteContent;

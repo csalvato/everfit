@@ -238,6 +238,8 @@
         destinationController.noteTitleString = self.lastSelectedNote.title;
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
                                   success:^(NSString *content) {
+                                      [destinationController.loadingNoteSpinner stopAnimating];
+                                      destinationController.noteContent.editable = YES;
                                       destinationController.noteContentString = [content convertENMLToTextViewFormat];
                                       NSLog(@"Retrieved Note Content: \n%@", destinationController.noteContentString);
                                   } 

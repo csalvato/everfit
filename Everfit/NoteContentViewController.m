@@ -17,6 +17,7 @@
 
 @implementation NoteContentViewController
 @synthesize topToolbar = _topToolbar;
+@synthesize loadingNoteSpinner = _loadingNoteSpinner;
 @synthesize saveButton = _saveButton;
 @synthesize noteTitle = _noteTitle;
 @synthesize noteContent = _noteContent;
@@ -144,6 +145,7 @@
     [self setNoteContent:nil];
     [self setSaveButton:nil];
     [self setTopToolbar:nil];
+    [self setLoadingNoteSpinner:nil];
     [super viewDidUnload];
 }
 
