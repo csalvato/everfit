@@ -151,7 +151,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nOs-2E-iEv"/>
-                                    <barButtonItem systemItem="save" id="Om0-Dv-nQ7"/>
+                                    <barButtonItem enabled="NO" systemItem="save" id="Om0-Dv-nQ7"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -163,6 +163,7 @@
                     <connections>
                         <outlet property="noteContent" destination="xgz-rg-8vb" id="n7Y-aH-K94"/>
                         <outlet property="noteTitle" destination="Hz0-W5-Rzi" id="6MI-RY-jAd"/>
+                        <outlet property="saveButton" destination="Om0-Dv-nQ7" id="jao-j2-EEJ"/>
                     </connections>
                 </viewController>
             </objects>

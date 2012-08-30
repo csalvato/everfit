@@ -16,6 +16,7 @@
 
 @interface NoteContentViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextField *noteTitle;
 @property (weak, nonatomic) IBOutlet UITextView *noteContent;
 @property (strong, nonatomic) NSString *noteTitleString;

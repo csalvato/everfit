@@ -13,6 +13,7 @@
 @end
 
 @implementation NoteContentViewController
+@synthesize saveButton = _saveButton;
 @synthesize noteTitle = _noteTitle;
 @synthesize noteContent = _noteContent;
 @synthesize noteTitleString = _noteTitleString;
@@ -21,21 +22,25 @@
 @synthesize delegate = _delegate;
 
 -(void)setNoteTitleString:(NSString *)noteTitleString {
-    _noteTitleString = noteTitleString;
-    [self setNoteTitleText:noteTitleString];
+    if(_noteTitleString != noteTitleString && ![_noteTitleString isEqualToString:noteTitleString]) {
+        _noteTitleString = noteTitleString;
+        [self setNoteTitleText:noteTitleString];   
+    }
 }
 
 -(void)setNoteContentString:(NSString *)noteContentString {
-    _noteContentString = noteContentString;
-    [self setNoteContentText:noteContentString];
+    if(_noteContentString != noteContentString && ![_noteContentString isEqualToString:noteContentString]) {
+        _noteContentString = noteContentString;
+        [self setNoteContentText:noteContentString];    
+    }
 }
 
 #pragma mark - Helper Functions
-//Sets the text of the workoutDetails Text Field
+//Sets the text of the noteContent Text Field
 -(void) setNoteContentText:(NSString *)noteContentText {
     if(noteContentText) self.noteContent.text = noteContentText;
 }
-//Sets the text of the workoutTitle Text Field
+//Sets the text of the noteTitle Text Field
 -(void) setNoteTitleText:(NSString *)noteTitleText {
     if(noteTitleText) self.noteTitle.text = noteTitleText;
 }
@@ -57,12 +62,31 @@
 - (void)viewDidUnload {
     [self setNoteTitle:nil];
     [self setNoteContent:nil];
+    [self setSaveButton:nil];
     [super viewDidUnload];
 }
 
-#pragma mark - Text Field Delegate
+#pragma mark - Text Field Delegate and Delegate Helper Functions
 -(void)textFieldDidEndEditing:(UITextField *)textField {
-    self.noteTitleString = textField.text;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)enableSaveButtonIfTitleExists:(NSNotification *) notification {
+    UITextField *theTextField = notification.object;
+    self.noteTitleString = theTextField.text;
+    if([self.noteTitleString length]) {
+        [self.saveButton setEnabled:YES];
+    } else {
+        [self.saveButton setEnabled:NO];
+    }
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    //Register for notifications on text field change so that I can monitor typing (and enable the save button, if necessary)
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(enableSaveButtonIfTitleExists:)
+                                                 name:UITextFieldTextDidChangeNotification 
+                                               object:textField];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
