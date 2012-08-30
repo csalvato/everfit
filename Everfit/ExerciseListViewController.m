@@ -14,7 +14,7 @@
 @interface ExerciseListViewController ()
 
 @property (nonatomic, strong) EDAMNotebook *notebook;
-@property (nonatomic, strong) NSArray *notes;
+@property (nonatomic, strong) EDAMNote *lastSelectedNote;
 @property (nonatomic, strong) NSArray *eventDates; //of NSDates holding the dates of the workout events
 @property (nonatomic, strong) NSDictionary *tableEntries; // The key is the NSString for the section header, the value is an NSArray with NSStrings for the entries within that section.
 @end
@@ -22,8 +22,8 @@
 @implementation ExerciseListViewController
 
 @synthesize notebook = _notebook;
-@synthesize notes = _notes;
 @synthesize eventDates = _eventDates;
+@synthesize lastSelectedNote = _lastSelectedNote;
 @synthesize tableEntries = _tableEntries;
 
 -(NSArray *)eventDates {
@@ -48,11 +48,6 @@
         _tableEntries = tableEntries;
         [self.tableView reloadData];
     }
-}
-
-- (void)setNotes:(NSArray *)notes {
-    _notes = notes;
-    [self.tableView reloadData];
 }
 
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
@@ -265,7 +260,7 @@
     return cell;
 }
 
-
+/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -277,23 +272,19 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
+*/
+/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
+*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSLog(@"Selected a row...");
 }
 
 @end
