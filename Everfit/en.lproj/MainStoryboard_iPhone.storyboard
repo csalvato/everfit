@@ -91,7 +91,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pOj-bq-c7P"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="pOj-bq-c7P">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CE2-qV-Asr">
+                            <connections>
+                                <action selector="savePressed:" destination="qMG-0s-zky" id="mS5-HG-kQR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="noteContent" destination="4PU-0y-tNh" id="Nej-Oa-OCM"/>
                         <outlet property="noteTitle" destination="Usd-cL-vJl" id="Jle-nZ-f9N"/>

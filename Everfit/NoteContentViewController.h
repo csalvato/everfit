@@ -23,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteContent;
 @property (strong, nonatomic) NSString *noteTitleString;
 @property (strong, nonatomic) NSString *noteContentString;
-@property (nonatomic) BOOL isNewNote;
+@property (strong, nonatomic) EDAMNote *note;
+
 @property (nonatomic, weak) id<ModalNoteContentViewControllerDelegate> delegate;
 
 @end

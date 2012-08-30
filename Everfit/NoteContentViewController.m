@@ -21,7 +21,7 @@
 @synthesize noteContent = _noteContent;
 @synthesize noteTitleString = _noteTitleString;
 @synthesize noteContentString = _noteContentString;
-@synthesize isNewNote = _isNewNote;
+@synthesize note = _note;
 @synthesize delegate = _delegate;
 
 -(void)setNoteTitleString:(NSString *)noteTitleString {
@@ -48,6 +48,52 @@
     if(noteTitleText) self.noteTitle.text = noteTitleText;
 }
 
+// Creates a new note, with self.noteTitleString and self.noteContentString
+-(void) createNewNote {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+
+    NSDate *date = [NSDate date];
+    int64_t currentTime_64 = [date timeIntervalSince1970];
+
+    EDAMNote *note = [[EDAMNote alloc] initWithGuid:[NSString generateUUIDString] 
+                                              title:self.noteTitleString 
+                                            content:[NSString encapulateStringInENML:self.noteContentString]
+                                        contentHash:nil 
+                                      contentLength:0
+                                            created:currentTime_64*1000 
+                                            updated:currentTime_64 *1000
+                                            deleted:0 
+                                             active:YES 
+                                  updateSequenceNum:0 
+                                       notebookGuid:[[self.delegate notebookForModalNoteContentViewController] guid] 
+                                           tagGuids:nil 
+                                          resources:nil 
+                                         attributes:nil 
+                                           tagNames:nil];
+    [noteStore createNote:note 
+                  success:^(EDAMNote *note) {
+                      NSLog(@"Successfully created note!");
+                  } 
+                  failure:^(NSError *error) {
+                      NSLog(@"Note creation failed!");
+                  }];
+}
+
+// Updates an existing note based on the note being viewed
+-(void) updateExistingNote {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    
+    self.note.content = [NSString encapulateStringInENML:self.noteContentString];
+    
+    [noteStore updateNote:self.note
+                  success:^(EDAMNote *note) {
+                      NSLog(@"Note updated successfully!");
+                  } 
+                  failure:^(NSError *error) {
+                      NSLog(@"Note update failed!");
+                  }
+     ];
+}
 
 #pragma mark - View Controller Life Cycle
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -108,38 +154,10 @@
 }
 
 - (IBAction)savePressed:(UIBarButtonItem *)sender {
-    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
-    
-    //Create the note to be added/updated
-    NSDate *date = [NSDate date];
-    int64_t currentTime_64 = [date timeIntervalSince1970];
-    EDAMNote *note = [[EDAMNote alloc] initWithGuid:[NSString generateUUIDString] 
-                                              title:self.noteTitleString 
-                                            content:[NSString encapulateStringInENML:self.noteContentString]
-                                        contentHash:nil 
-                                      contentLength:0
-                                            created:currentTime_64*1000 
-                                            updated:currentTime_64 *1000
-                                            deleted:0 
-                                             active:YES 
-                                  updateSequenceNum:0 
-                                       notebookGuid:[[self.delegate notebookForModalNoteContentViewController] guid] 
-                                           tagGuids:nil 
-                                          resources:nil 
-                                         attributes:nil 
-                                           tagNames:nil];
-    if(self.isNewNote) {
-        //Create new note...
-        [noteStore createNote:note 
-                      success:^(EDAMNote *note) {
-                          NSLog(@"Successfully created note!");
-                      } 
-                      failure:^(NSError *error) {
-                          NSLog(@"Note creation failed!");
-                      }]; 
+    if(!self.note) {
+        [self createNewNote];
     } else {
-        //Get existing note
-        //Update existing note
+        [self updateExistingNote];
     }
     [self.delegate modalNoteContentViewControllerDidFinish:self];
 }

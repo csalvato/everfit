@@ -219,7 +219,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NoteContentViewController *destinationController = segue.destinationViewController;
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
-        destinationController.isNewNote = NO;
+        destinationController.note = self.lastSelectedNote;
 
         EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
         destinationController.noteTitleString = self.lastSelectedNote.title;
@@ -233,7 +233,6 @@
                                   }
          ];
     } else if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
-        destinationController.isNewNote = YES;
         destinationController.delegate = self;
     }
 }
@@ -307,6 +306,7 @@
 
 #pragma mark - Modal Note Content View Controller Delegate
 -(void)modalNoteContentViewControllerDidFinish:(NoteContentViewController *)sender {
+    [self initializeEvernoteStore];
     [self dismissModalViewControllerAnimated:YES];
 }
 
