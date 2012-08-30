@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="-102" y="-27"/>
         </scene>
-        <!--Note Content View Controller-->
+        <!--Note Content View Controller - Edit Event-->
         <scene sceneID="9Up-hC-EHg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHg-9P-aGS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,7 +92,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="pOj-bq-c7P">
+                    <navigationItem key="navigationItem" title="Edit Event" id="pOj-bq-c7P">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="CE2-qV-Asr">
                             <connections>
                                 <action selector="savePressed:" destination="qMG-0s-zky" id="mS5-HG-kQR"/>
@@ -166,6 +166,14 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="jyV-s1-n34">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -182,6 +190,19 @@
             <point key="canvasLocation" x="409" y="266"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ExerciseListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
+        </class>
+        <class className="NoteContentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteContentViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noteContent" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="noteTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
