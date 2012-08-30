@@ -16,6 +16,7 @@
 @end
 
 @implementation NoteContentViewController
+@synthesize topToolbar = _topToolbar;
 @synthesize saveButton = _saveButton;
 @synthesize noteTitle = _noteTitle;
 @synthesize noteContent = _noteContent;
@@ -48,8 +49,27 @@
     if(noteTitleText) self.noteTitle.text = noteTitleText;
 }
 
+-(void)replaceLastBarButtonItemWithSpinner {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [spinner startAnimating];
+
+    if(self.topToolbar) {
+        //If it has a toolbar (then it is a modal controller, with last button as save button)
+        NSMutableArray *topToolbarItems = [self.topToolbar.items mutableCopy];
+        [topToolbarItems removeLastObject];
+        [topToolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:spinner]];
+        self.topToolbar.items = topToolbarItems;
+    } else {
+        //If it does not have a toolbar (then it is embedded in a nav controller)
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    }
+    
+}
+
 // Creates a new note, with self.noteTitleString and self.noteContentString
 -(void) createNewNote {
+    [self replaceLastBarButtonItemWithSpinner];
+    
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
 
     NSDate *date = [NSDate date];
@@ -73,6 +93,7 @@
     [noteStore createNote:note 
                   success:^(EDAMNote *note) {
                       NSLog(@"Successfully created note!");
+                      [self.delegate modalNoteContentViewControllerDidFinish:self];
                   } 
                   failure:^(NSError *error) {
                       NSLog(@"Note creation failed!");
@@ -81,18 +102,28 @@
 
 // Updates an existing note based on the note being viewed
 -(void) updateExistingNote {
+    UIBarButtonItem *saveButton = self.navigationItem.rightBarButtonItem;
+    [self replaceLastBarButtonItemWithSpinner];
+    
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
+    self.note.title = self.noteTitleString;
     self.note.content = [self.noteContentString convertTextViewFormatToENML];
     
     [noteStore updateNote:self.note
                   success:^(EDAMNote *note) {
                       NSLog(@"Note updated successfully!");
+                      //If this is modal, can send the signal that we are done
+                      [self.delegate modalNoteContentViewControllerDidFinish:self];
+                      
+                      //If not modal, replace last bar button (spinner) item with Save button
+                      self.navigationItem.rightBarButtonItem = saveButton;
                   } 
                   failure:^(NSError *error) {
                       NSLog(@"Note update failed!");
                   }
      ];
+    
 }
 
 #pragma mark - View Controller Life Cycle
@@ -112,6 +143,7 @@
     [self setNoteTitle:nil];
     [self setNoteContent:nil];
     [self setSaveButton:nil];
+    [self setTopToolbar:nil];
     [super viewDidUnload];
 }
 
@@ -159,7 +191,6 @@
     } else {
         [self updateExistingNote];
     }
-    [self.delegate modalNoteContentViewControllerDidFinish:self];
 }
 
 

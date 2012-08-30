@@ -184,25 +184,13 @@
                         <outlet property="noteContent" destination="xgz-rg-8vb" id="n7Y-aH-K94"/>
                         <outlet property="noteTitle" destination="Hz0-W5-Rzi" id="6MI-RY-jAd"/>
                         <outlet property="saveButton" destination="Om0-Dv-nQ7" id="jao-j2-EEJ"/>
+                        <outlet property="topToolbar" destination="mUL-Bt-w9H" id="vUC-tq-wWj"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="409" y="266"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ExerciseListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
-        </class>
-        <class className="NoteContentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteContentViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noteContent" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="noteTitle" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
