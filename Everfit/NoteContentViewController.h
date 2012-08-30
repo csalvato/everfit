@@ -11,9 +11,9 @@
 @interface NoteContentViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *noteTitle;
-@property (weak, nonatomic) IBOutlet UITextView *noteDetails;
+@property (weak, nonatomic) IBOutlet UITextView *noteContent;
 @property (strong, nonatomic) NSString *noteTitleString;
-@property (strong, nonatomic) NSString *noteDetailsString;
+@property (strong, nonatomic) NSString *noteContentString;
 @property (nonatomic) BOOL isNewNote;
 
 @end

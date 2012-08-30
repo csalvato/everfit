@@ -88,7 +88,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="YbZ-o5-WB1"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="noteDetails" destination="4PU-0y-tNh" id="Bv4-0r-L5B"/>
+                        <outlet property="noteContent" destination="4PU-0y-tNh" id="Nej-Oa-OCM"/>
                         <outlet property="noteTitle" destination="Usd-cL-vJl" id="Jle-nZ-f9N"/>
                     </connections>
                 </viewController>

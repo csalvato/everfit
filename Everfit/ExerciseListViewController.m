@@ -217,20 +217,23 @@
 #define SEGUE_ADD_EXERCISE @"Add Exercise"
 #define SEGUE_VIEW_EXERCISE @"View Exercise"
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NoteContentViewController *destinationController = segue.destinationViewController;
     if([segue.identifier isEqualToString:SEGUE_VIEW_EXERCISE]) {
-        EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
-        NoteContentViewController *destinationController = segue.destinationViewController;
-        destinationController.noteTitleString = self.lastSelectedNote.title;
         destinationController.isNewNote = NO;
+
+        EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+        destinationController.noteTitleString = self.lastSelectedNote.title;
         [noteStore getNoteContentWithGuid:self.lastSelectedNote.guid 
                                   success:^(NSString *content) {
                                       NSLog(@"Retrieved Note Content: %@", content);
-                                      destinationController.noteDetailsString = content;
+                                      destinationController.noteContentString = content;
                                   } 
                                   failure:^(NSError *error) {
                                       NSLog(@"Failed to get Note Content...investigate...");
                                   }
          ];
+    } else if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
+        destinationController.isNewNote = YES;
     }
 }
 

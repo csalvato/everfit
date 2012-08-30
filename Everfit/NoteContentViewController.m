@@ -8,15 +8,15 @@
 
 #import "NoteContentViewController.h"
 
-@interface NoteContentViewController () <UITextFieldDelegate>
+@interface NoteContentViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @end
 
 @implementation NoteContentViewController
 @synthesize noteTitle = _noteTitle;
-@synthesize noteDetails = _noteDetails;
+@synthesize noteContent = _noteContent;
 @synthesize noteTitleString = _noteTitleString;
-@synthesize noteDetailsString = _noteDetailsString;
+@synthesize noteContentString = _noteContentString;
 @synthesize isNewNote = _isNewNote;
 
 -(void)setNoteTitleString:(NSString *)noteTitleString {
@@ -24,15 +24,15 @@
     [self setNoteTitleText:noteTitleString];
 }
 
--(void)setNoteDetailsString:(NSString *)noteDetailsString {
-    _noteDetailsString = noteDetailsString;
-    [self setNoteDetailsText:noteDetailsString];
+-(void)setNoteContentString:(NSString *)noteContentString {
+    _noteContentString = noteContentString;
+    [self setNoteContentText:noteContentString];
 }
 
 #pragma mark - Helper Functions
 //Sets the text of the workoutDetails Text Field
--(void) setNoteDetailsText:(NSString *)noteDetailsText {
-    if(noteDetailsText) self.noteDetails.text = noteDetailsText;
+-(void) setNoteContentText:(NSString *)noteContentText {
+    if(noteContentText) self.noteContent.text = noteContentText;
 }
 //Sets the text of the workoutTitle Text Field
 -(void) setNoteTitleText:(NSString *)noteTitleText {
@@ -48,20 +48,30 @@
 
 -(void)viewDidLoad {
     [self setNoteTitleText:self.noteTitleString];
-    [self setNoteDetailsText:self.noteDetailsString];
+    [self setNoteContentText:self.noteContentString];
     self.noteTitle.delegate = self;
+    self.noteContent.delegate = self;
 }
 
 - (void)viewDidUnload {
     [self setNoteTitle:nil];
-    [self setNoteDetails:nil];
+    [self setNoteContent:nil];
     [super viewDidUnload];
 }
 
 #pragma mark - Text Field Delegate
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    self.noteTitleString = textField.text;
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - Text View Delegate
+-(void)textViewDidChange:(UITextView *)textView{
+    self.noteContentString = textView.text;
 }
 
 @end
