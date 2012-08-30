@@ -11,6 +11,7 @@
 #import "NSString+UUIDString.h"
 #import "NoteContentViewController.h"
 #import "NSString+ENML.h"
+#import "Thrift.h"
 
 @interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 
@@ -86,6 +87,14 @@
 
 // Checks to see if a notebook exists labelled "Everfit".  If it does not, the notebook will be created.  Once the notebook exists, it is set as a property of the controller for use in generating the table data and the notes are retrieved and stored as a property.
 - (void) initializeEvernoteStore {
+    //Hide the refresh button and show a spinner.
+    UIBarButtonItem *refreshButton = self.navigationItem.leftBarButtonItem;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [spinner startAnimating];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
+    
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
@@ -99,8 +108,9 @@
             self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
         }
         
-     [self retrieveFitnessNotesData];
-    
+        [self retrieveFitnessNotesData];
+        self.navigationItem.leftBarButtonItem = refreshButton;
+        
     } failure:^(NSError *error) {
         NSLog(@"Error listing notebooks...");
     }];
