@@ -18,6 +18,7 @@
 @synthesize noteTitleString = _noteTitleString;
 @synthesize noteContentString = _noteContentString;
 @synthesize isNewNote = _isNewNote;
+@synthesize delegate = _delegate;
 
 -(void)setNoteTitleString:(NSString *)noteTitleString {
     _noteTitleString = noteTitleString;
@@ -73,5 +74,11 @@
 -(void)textViewDidChange:(UITextView *)textView{
     self.noteContentString = textView.text;
 }
+
+#pragma mark - Target Action
+- (IBAction)cancelPressed:(UIBarButtonItem *)sender {
+    [self.delegate modalNoteContentViewControllerDidFinish:self];
+}
+
 
 @end

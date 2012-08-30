@@ -48,7 +48,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="735-si-g6s">
                             <connections>
-                                <segue destination="wl0-3r-vtf" kind="modal" id="NDs-4A-0Jn"/>
+                                <segue destination="wl0-3r-vtf" kind="modal" identifier="Add Exercise" id="NDs-4A-0Jn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -146,6 +146,9 @@
                                 <items>
                                     <barButtonItem systemItem="cancel" id="gRY-4P-9qd">
                                         <color key="tintColor" red="0.75982892513275146" green="0.13239650428295135" blue="0.14669875800609589" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="cancelPressed:" destination="wl0-3r-vtf" id="iDG-Q5-j8L"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="nOs-2E-iEv"/>
                                     <barButtonItem systemItem="save" id="Om0-Dv-nQ7"/>
@@ -166,18 +169,6 @@
             <point key="canvasLocation" x="365" y="458"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ExerciseListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExerciseListViewController.h"/>
-        </class>
-        <class className="NoteContentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NoteContentViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noteContent" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="noteTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

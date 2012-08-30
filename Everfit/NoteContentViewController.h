@@ -21,5 +21,6 @@
 @property (strong, nonatomic) NSString *noteTitleString;
 @property (strong, nonatomic) NSString *noteContentString;
 @property (nonatomic) BOOL isNewNote;
+@property (nonatomic, weak) id<ModalNoteContentViewControllerDelegate> delegate;
 
 @end

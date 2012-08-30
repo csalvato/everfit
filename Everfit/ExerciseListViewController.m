@@ -11,7 +11,7 @@
 #import "NSString+UUIDString.h"
 #import "NoteContentViewController.h"
 
-@interface ExerciseListViewController ()
+@interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 
 @property (nonatomic, strong) EDAMNotebook *notebook;
 @property (nonatomic, strong) EDAMNote *lastSelectedNote;
@@ -234,6 +234,7 @@
          ];
     } else if([segue.identifier isEqualToString:SEGUE_ADD_EXERCISE]) {
         destinationController.isNewNote = YES;
+        destinationController.delegate = self;
     }
 }
 
@@ -302,6 +303,11 @@
     NSArray *sectionData = [self.tableEntries objectForKey:[self.eventDates objectAtIndex:indexPath.section]];
     self.lastSelectedNote = [sectionData objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SEGUE_VIEW_EXERCISE sender:self];
+}
+
+#pragma mark - Modal Note Content View Controller Delegate
+-(void)modalNoteContentViewControllerDidFinish:(NoteContentViewController *)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end
