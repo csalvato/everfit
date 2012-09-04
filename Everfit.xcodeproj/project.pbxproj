@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20501F8D15F044320022483C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 20501F8C15F044320022483C /* Default.png */; };
+		20501F8F15F044340022483C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20501F8E15F044340022483C /* Default@2x.png */; };
 		2058CE5915ED7FA40055506C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5815ED7FA40055506C /* UIKit.framework */; };
 		2058CE5B15ED7FA40055506C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5A15ED7FA40055506C /* Foundation.framework */; };
 		2058CE5D15ED7FA40055506C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5C15ED7FA40055506C /* CoreGraphics.framework */; };
@@ -29,6 +31,8 @@
 		2060B6E315EFD417007DA32D /* NSString+ENML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2060B6E215EFD417007DA32D /* NSString+ENML.m */; };
 		20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */; };
 		20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */; };
+		20F1E54E15F0421F00F2ED6F /* everfiticon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F1E54D15F0421F00F2ED6F /* everfiticon-retina.png */; };
+		20F1E55015F0422800F2ED6F /* everfiticon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F1E54F15F0422800F2ED6F /* everfiticon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20501F8C15F044320022483C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		20501F8E15F044340022483C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2058CE5415ED7FA40055506C /* Everfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2058CE5815ED7FA40055506C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2058CE5A15ED7FA40055506C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +112,8 @@
 		20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
 		20E5621D15EE244400AB3CF6 /* NSString+UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUIDString.h"; sourceTree = "<group>"; };
 		20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UUIDString.m"; sourceTree = "<group>"; };
+		20F1E54D15F0421F00F2ED6F /* everfiticon-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "everfiticon-retina.png"; sourceTree = "<group>"; };
+		20F1E54F15F0422800F2ED6F /* everfiticon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = everfiticon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +145,10 @@
 		2058CE4915ED7FA40055506C = {
 			isa = PBXGroup;
 			children = (
+				20501F8E15F044340022483C /* Default@2x.png */,
+				20501F8C15F044320022483C /* Default.png */,
+				20F1E54F15F0422800F2ED6F /* everfiticon.png */,
+				20F1E54D15F0421F00F2ED6F /* everfiticon-retina.png */,
 				2058CF7B15ED87760055506C /* Security.framework */,
 				2058CE5E15ED7FA40055506C /* Everfit */,
 				2058CE7F15ED7FA40055506C /* EverfitTests */,
@@ -416,6 +428,10 @@
 				2058CE6C15ED7FA40055506C /* MainStoryboard_iPhone.storyboard in Resources */,
 				2058CE6F15ED7FA40055506C /* MainStoryboard_iPad.storyboard in Resources */,
 				2058CF4615ED85D10055506C /* LICENSE in Resources */,
+				20F1E54E15F0421F00F2ED6F /* everfiticon-retina.png in Resources */,
+				20F1E55015F0422800F2ED6F /* everfiticon.png in Resources */,
+				20501F8D15F044320022483C /* Default.png in Resources */,
+				20501F8F15F044340022483C /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

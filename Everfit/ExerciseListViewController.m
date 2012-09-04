@@ -223,6 +223,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeEvernoteStore];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(CGFloat) 0.44 green:(CGFloat) 0.27 blue:(CGFloat) 0.57 alpha:1];
+    
 }
 
 #define SEGUE_ADD_EXERCISE @"Add Exercise"

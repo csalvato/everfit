@@ -15,6 +15,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Exercise Cell" textLabel="FDJ-Af-cNi" style="IBUITableViewCellStyleDefault" id="CKr-b8-isJ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -35,6 +36,7 @@
                                 </view>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="rZR-oe-mI2" id="dCy-AI-l6g"/>
                             <outlet property="delegate" destination="rZR-oe-mI2" id="Io8-s5-vVY"/>
@@ -147,7 +149,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xgz-rg-8vb">
-                                <rect key="frame" x="0.0" y="75" width="320" height="341"/>
+                                <rect key="frame" x="0.0" y="75" width="320" height="385"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -170,6 +172,7 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="0.4392156862745098" green="0.27058823529411763" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" text="Add Event" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="jyV-s1-n34">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -179,11 +182,6 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
                             </label>
-                            <webView contentMode="scaleToFill" id="W2V-3j-iry">
-                                <rect key="frame" x="-31" y="237" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
