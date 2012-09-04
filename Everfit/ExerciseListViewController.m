@@ -56,7 +56,7 @@
 #pragma mark - Helper Functions
 
 // Creates a new default notebook with the value of REQUIRED_NOTEBOOK_NAME ("Everfit")
--(EDAMNotebook *) createNewNotebook {
+-(EDAMNotebook *) createNewNotebookWithName:(NSString *)name {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
     NSDate *date = [NSDate date];
@@ -64,7 +64,7 @@
     int64_t currentTime_64 = [date timeIntervalSince1970];
     
     EDAMNotebook *notebook = [[EDAMNotebook alloc] initWithGuid:[NSString generateUUIDString] 
-                                                           name:REQUIRED_NOTEBOOK_NAME 
+                                                           name:name 
                                               updateSequenceNum:currentTime_32 
                                                 defaultNotebook:NO 
                                                  serviceCreated:currentTime_64 
@@ -102,7 +102,7 @@
         // Store the notebook (and create it if necessary)
         if(everfitNotebookIndex == NSNotFound) {
             NSLog(@"Creating Notebook...");
-            self.notebook = [self createNewNotebook];
+            self.notebook = [self createNewNotebookWithName:REQUIRED_NOTEBOOK_NAME];
         } else {
             NSLog(@"Using Existing Notebook...");
             self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
