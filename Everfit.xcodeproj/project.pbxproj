@@ -17,12 +17,10 @@
 		2058CE6915ED7FA40055506C /* EverfitAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */; };
 		2058CE6C15ED7FA40055506C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE6A15ED7FA40055506C /* MainStoryboard_iPhone.storyboard */; };
 		2058CE6F15ED7FA40055506C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */; };
-		2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE7115ED7FA40055506C /* EverfitViewController.m */; };
 		2058CE7A15ED7FA40055506C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE7915ED7FA40055506C /* SenTestingKit.framework */; };
 		2058CE7B15ED7FA40055506C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5815ED7FA40055506C /* UIKit.framework */; };
 		2058CE7C15ED7FA40055506C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CE5A15ED7FA40055506C /* Foundation.framework */; };
 		2058CE8415ED7FA50055506C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2058CE8215ED7FA50055506C /* InfoPlist.strings */; };
-		2058CE8715ED7FA50055506C /* EverfitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2058CE8615ED7FA50055506C /* EverfitTests.m */; };
 		2058CEDF15ED84E60055506C /* libEvernoteAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2058CEDE15ED84E60055506C /* libEvernoteAPI.a */; };
 		2058CF4615ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
 		2058CF4715ED85D10055506C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2058CF0115ED85D10055506C /* LICENSE */; };
@@ -31,6 +29,7 @@
 		2060B6E315EFD417007DA32D /* NSString+ENML.m in Sources */ = {isa = PBXBuildFile; fileRef = 2060B6E215EFD417007DA32D /* NSString+ENML.m */; };
 		20CE9D4515F643D6001D90D4 /* ExerciseListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE9D4415F643D6001D90D4 /* ExerciseListViewControllerTests.m */; };
 		20CE9D4815F6442C001D90D4 /* NoteContentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE9D4715F6442C001D90D4 /* NoteContentViewControllerTests.m */; };
+		20CE9D4B15F64577001D90D4 /* NSString+ENMLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CE9D4A15F64577001D90D4 /* NSString+ENMLTests.m */; };
 		20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */; };
 		20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E5621E15EE244400AB3CF6 /* NSString+UUIDString.m */; };
 		20F1E54E15F0421F00F2ED6F /* everfiticon-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F1E54D15F0421F00F2ED6F /* everfiticon-retina.png */; };
@@ -62,14 +61,10 @@
 		2058CE6815ED7FA40055506C /* EverfitAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitAppDelegate.m; sourceTree = "<group>"; };
 		2058CE6B15ED7FA40055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		2058CE6E15ED7FA40055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		2058CE7015ED7FA40055506C /* EverfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverfitViewController.h; sourceTree = "<group>"; };
-		2058CE7115ED7FA40055506C /* EverfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitViewController.m; sourceTree = "<group>"; };
 		2058CE7815ED7FA40055506C /* EverfitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverfitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2058CE7915ED7FA40055506C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2058CE8115ED7FA50055506C /* EverfitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EverfitTests-Info.plist"; sourceTree = "<group>"; };
 		2058CE8315ED7FA50055506C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2058CE8515ED7FA50055506C /* EverfitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EverfitTests.h; sourceTree = "<group>"; };
-		2058CE8615ED7FA50055506C /* EverfitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EverfitTests.m; sourceTree = "<group>"; };
 		2058CEDE15ED84E60055506C /* libEvernoteAPI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libEvernoteAPI.a; sourceTree = "<group>"; };
 		2058CEF315ED85D10055506C /* GCOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCOAuth.h; sourceTree = "<group>"; };
 		2058CEF615ED85D10055506C /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -114,6 +109,8 @@
 		20CE9D4415F643D6001D90D4 /* ExerciseListViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseListViewControllerTests.m; path = ../ExerciseListViewControllerTests.m; sourceTree = "<group>"; };
 		20CE9D4615F6442C001D90D4 /* NoteContentViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteContentViewControllerTests.h; sourceTree = "<group>"; };
 		20CE9D4715F6442C001D90D4 /* NoteContentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteContentViewControllerTests.m; sourceTree = "<group>"; };
+		20CE9D4915F64577001D90D4 /* NSString+ENMLTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ENMLTests.h"; sourceTree = "<group>"; };
+		20CE9D4A15F64577001D90D4 /* NSString+ENMLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ENMLTests.m"; sourceTree = "<group>"; };
 		20D2CE2315EE1368003EB575 /* ExerciseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListViewController.h; sourceTree = "<group>"; };
 		20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
 		20E5621D15EE244400AB3CF6 /* NSString+UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUIDString.h"; sourceTree = "<group>"; };
@@ -198,8 +195,6 @@
 				20D2CE2315EE1368003EB575 /* ExerciseListViewController.h */,
 				20D2CE2415EE1368003EB575 /* ExerciseListViewController.m */,
 				2058CE6D15ED7FA40055506C /* MainStoryboard_iPad.storyboard */,
-				2058CE7015ED7FA40055506C /* EverfitViewController.h */,
-				2058CE7115ED7FA40055506C /* EverfitViewController.m */,
 				2058CE5F15ED7FA40055506C /* Supporting Files */,
 			);
 			path = Everfit;
@@ -224,8 +219,8 @@
 				20CE9D4415F643D6001D90D4 /* ExerciseListViewControllerTests.m */,
 				20CE9D4615F6442C001D90D4 /* NoteContentViewControllerTests.h */,
 				20CE9D4715F6442C001D90D4 /* NoteContentViewControllerTests.m */,
-				2058CE8515ED7FA50055506C /* EverfitTests.h */,
-				2058CE8615ED7FA50055506C /* EverfitTests.m */,
+				20CE9D4915F64577001D90D4 /* NSString+ENMLTests.h */,
+				20CE9D4A15F64577001D90D4 /* NSString+ENMLTests.m */,
 				2058CE8015ED7FA50055506C /* Supporting Files */,
 			);
 			path = EverfitTests;
@@ -479,7 +474,6 @@
 			files = (
 				2058CE6515ED7FA40055506C /* main.m in Sources */,
 				2058CE6915ED7FA40055506C /* EverfitAppDelegate.m in Sources */,
-				2058CE7215ED7FA40055506C /* EverfitViewController.m in Sources */,
 				20D2CE2515EE1368003EB575 /* ExerciseListViewController.m in Sources */,
 				20E5621F15EE244400AB3CF6 /* NSString+UUIDString.m in Sources */,
 				2060B6D115EF810C007DA32D /* NoteContentViewController.m in Sources */,
@@ -491,9 +485,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2058CE8715ED7FA50055506C /* EverfitTests.m in Sources */,
 				20CE9D4515F643D6001D90D4 /* ExerciseListViewControllerTests.m in Sources */,
 				20CE9D4815F6442C001D90D4 /* NoteContentViewControllerTests.m in Sources */,
+				20CE9D4B15F64577001D90D4 /* NSString+ENMLTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
