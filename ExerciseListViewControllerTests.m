@@ -12,7 +12,13 @@
 
 @implementation ExerciseListViewControllerTests
 
+//Set up before ALL tests
++ (void) setUp {
+    [super setUp];
+    
+}
 
+//Set up before Each test
 - (void)setUp
 {
     [super setUp];
@@ -65,10 +71,16 @@
     
 }
 
+//Tear down after each test
 - (void)tearDown
 {
     // Tear-down code here.
     
+    [super tearDown];
+}
+
+//Tear down after ALL tests
++ (void) tearDown {
     [super tearDown];
 }
 
