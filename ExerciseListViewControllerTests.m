@@ -7,6 +7,7 @@
 //
 
 #import "ExerciseListViewControllerTests.h"
+#import "ExerciseListViewController.h"
 #import "EvernoteNoteStore.h"
 
 @implementation ExerciseListViewControllerTests
@@ -22,7 +23,42 @@
 }
 
 - (void) clearContentsOfSandboxAccount {
+    EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
+    [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
+        //Find the required notebook index
+        NSUInteger requiredNotebookIndex = [notebooks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            EDAMNotebook *notebook = obj;
+            if ([notebook.name isEqualToString:REQUIRED_NOTEBOOK_NAME]) {
+                NSLog(@"Correct Notebook: %@", notebook.name);
+                return YES;
+            } else {
+                NSLog(@"Incorrect Notebook: %@", notebook.name);
+                return NO;
+            }
+
+        }];
+        
+        
+        // Store the notebook (and create it if necessary)
+        if(requiredNotebookIndex == NSNotFound) {
+            NSLog(@"Creating Notebook...");
+            self.notebook = [self createNewNotebookWithName:REQUIRED_NOTEBOOK_NAME];
+        } else {
+            NSLog(@"Using Existing Notebook...");
+            //Delete all of the existing notes
+            self.notebook = [notebooks objectAtIndex:requiredNotebookIndex];
+            NSLog(@"Deleting Notes...");
+            
+        }
+        
+        [self retrieveFitnessNotesData];
+        self.navigationItem.leftBarButtonItem = refreshButton;
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Error listing notebooks...");
+    }];
+
 }
 
 - (void) bootstrapSandboxAccountWithFixtureData {

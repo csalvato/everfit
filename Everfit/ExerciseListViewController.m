@@ -53,7 +53,6 @@
     }
 }
 
-#define REQUIRED_NOTEBOOK_NAME @"Everfit"
 #pragma mark - Helper Functions
 
 //Sets the initial Evernote Session
