@@ -7,19 +7,12 @@
 //
 
 #import "ExerciseListViewController.h"
-#import "EvernoteNoteStore.h"
-#import "NSString+UUIDString.h"
+#import "ExerciseListViewControllerExtension.h"
 #import "NoteContentViewController.h"
-#import "NSString+ENML.h"
 #import "Thrift.h"
-#import "EvernoteBrain.h"
 
 @interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 
-@property (nonatomic, strong) EDAMNotebook *notebook;
-@property (nonatomic, strong) EDAMNote *lastSelectedNote;
-@property (nonatomic, strong) NSArray *eventDates; //of NSDates holding the dates of the workout events
-@property (nonatomic, strong) NSDictionary *tableEntries; // The key is the NSString for the section header, the value is an NSArray with NSStrings for the entries within that section.
 @end
 
 @implementation ExerciseListViewController
@@ -128,7 +121,7 @@
             self.notebook = [notebooks objectAtIndex:requiredNotebookIndex];
         }
         
-        [self retrieveFitnessNotesData];
+        [self retrieveNotesData];
         self.navigationItem.leftBarButtonItem = refreshButton;
         
     } failure:^(NSError *error) {
@@ -137,7 +130,7 @@
 }
 
 // Refreshes/retrieve fitness notes data from the Evernote Note Store.
--(void) retrieveFitnessNotesData {
+-(void) retrieveNotesData {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
     // Create a query to get all of the notes from the notebook

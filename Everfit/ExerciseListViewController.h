@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
 
 @interface ExerciseListViewController : UITableViewController
