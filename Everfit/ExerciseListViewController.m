@@ -118,14 +118,14 @@
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
     
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
-        NSUInteger everfitNotebookIndex = [self findIndexOfRequiredNotebook:notebooks];
+        NSUInteger requiredNotebookIndex = [self findIndexOfRequiredNotebook:notebooks];
         // Store the notebook (and create it if necessary)
-        if(everfitNotebookIndex == NSNotFound) {
+        if(requiredNotebookIndex == NSNotFound) {
             NSLog(@"Creating Notebook...");
             self.notebook = [self createNewNotebookWithName:REQUIRED_NOTEBOOK_NAME];
         } else {
             NSLog(@"Using Existing Notebook...");
-            self.notebook = [notebooks objectAtIndex:everfitNotebookIndex];
+            self.notebook = [notebooks objectAtIndex:requiredNotebookIndex];
         }
         
         [self retrieveFitnessNotesData];

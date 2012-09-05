@@ -16,6 +16,16 @@
     [super setUp];
     
     // Set-up code here.
+    
+    //Load Evernote Fixture
+}
+
+- (void) clearContentsOfSandboxAccount {
+    
+}
+
+- (void) bootstrapSandboxAccountWithFixtureData {
+    
 }
 
 - (void)tearDown
