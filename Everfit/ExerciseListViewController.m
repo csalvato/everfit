@@ -12,6 +12,7 @@
 #import "NoteContentViewController.h"
 #import "NSString+ENML.h"
 #import "Thrift.h"
+#import "EvernoteBrain.h"
 
 @interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 

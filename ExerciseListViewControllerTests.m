@@ -7,6 +7,7 @@
 //
 
 #import "ExerciseListViewControllerTests.h"
+#import "EvernoteNoteStore.h"
 
 @implementation ExerciseListViewControllerTests
 
