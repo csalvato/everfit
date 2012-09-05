@@ -55,6 +55,26 @@
 #define REQUIRED_NOTEBOOK_NAME @"Everfit"
 #pragma mark - Helper Functions
 
+//Sets the initial Evernote Session
+
+- (void) setEvernoteSession {
+    // Initial development is done on the sandbox service
+    // Change this to @"www.evernote.com" to use the production Evernote service
+    NSString *EVERNOTE_HOST = @"sandbox.evernote.com";
+    
+    // Fill in the consumer key and secret with the values that you received from Evernote
+    // To get an API key, visit http://dev.evernote.com/documentation/cloud/
+    NSString *CONSUMER_KEY = @"csalvato";
+    NSString *CONSUMER_SECRET = @"32d8d1e5f4778b21";
+    
+    // set up Evernote session singleton
+    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST 
+                              consumerKey:CONSUMER_KEY 
+                           consumerSecret:CONSUMER_SECRET];
+}
+
+
+
 // Creates a new default notebook with the value of REQUIRED_NOTEBOOK_NAME ("Everfit")
 -(EDAMNotebook *) createNewNotebookWithName:(NSString *)name {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
@@ -222,7 +242,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initializeEvernoteStore];
+    [self setEvernoteSession];
+    
+    // Authenticate the user
+    EvernoteSession *session = [EvernoteSession sharedSession];
+    [session authenticateWithViewController:self completionHandler:^(NSError *error) {
+        if (error || !session.isAuthenticated) {
+            NSLog(@"Login Failure! :(");
+        } else {
+            NSLog(@"Login Success! :)");
+            [self initializeEvernoteStore];
+
+        } 
+    }];
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(CGFloat) 0.44 green:(CGFloat) 0.27 blue:(CGFloat) 0.57 alpha:1];
     

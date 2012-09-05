@@ -16,19 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self setEvernoteSession];
-    
-    // Authenticate the user
-    EvernoteSession *session = [EvernoteSession sharedSession];
-    [session authenticateWithViewController:self.window.rootViewController completionHandler:^(NSError *error) {
-        if (error || !session.isAuthenticated) {
-            NSLog(@"Login Failure! :(");
-        } else {
-            NSLog(@"Login Success! :)");
-        } 
-    }];
-    
-    return YES;
+     return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -56,22 +44,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - Helper Functions
-- (void) setEvernoteSession {
-    // Initial development is done on the sandbox service
-    // Change this to @"www.evernote.com" to use the production Evernote service
-    NSString *EVERNOTE_HOST = @"sandbox.evernote.com";
-    
-    // Fill in the consumer key and secret with the values that you received from Evernote
-    // To get an API key, visit http://dev.evernote.com/documentation/cloud/
-    NSString *CONSUMER_KEY = @"csalvato";
-    NSString *CONSUMER_SECRET = @"32d8d1e5f4778b21";
-    
-    // set up Evernote session singleton
-    [EvernoteSession setSharedSessionHost:EVERNOTE_HOST 
-                              consumerKey:CONSUMER_KEY 
-                           consumerSecret:CONSUMER_SECRET];
 }
 @end
