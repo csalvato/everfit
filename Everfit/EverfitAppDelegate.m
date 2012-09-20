@@ -19,6 +19,8 @@
 {
     // Override point for customization after application launch.
     [MixpanelAPI sharedAPIWithToken:@"ad8b4a821f50202f9cacb688ceab7f69"];
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel track:@"Launched App"];
      return YES;
 }
 							
