@@ -9,6 +9,7 @@
 #import "EverfitAppDelegate.h"
 #import "EvernoteSession.h"
 #import "NSString+UUIDString.h"
+#import "MixpanelAPI.h"
 
 @implementation EverfitAppDelegate
 
@@ -16,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Override point for customization after application launch.
+    [MixpanelAPI sharedAPIWithToken:@"ad8b4a821f50202f9cacb688ceab7f69"];
      return YES;
 }
 							

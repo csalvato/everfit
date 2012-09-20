@@ -8,28 +8,36 @@
 
 #import "ExerciseListViewControllerTests.h"
 #import "ExerciseListViewController.h"
-#import "EvernoteNoteStore.h"
+#import "ExerciseListViewControllerExtension.h"
+
+
+@interface ExerciseListViewControllerTests ()
+
+@property (nonatomic, strong) ExerciseListViewController *elvc;
+
+@end
 
 @implementation ExerciseListViewControllerTests
+
+@synthesize elvc = _elvc;
 
 //Set up before ALL tests
 + (void) setUp {
     [super setUp];
-    
+    [self clearContentsOfSandboxAccount];
 }
 
 //Set up before Each test
 - (void)setUp
 {
     [super setUp];
-    
-    // Set-up code here.
-    
-    //Load Evernote Fixture
+    self.elvc = [[ExerciseListViewController alloc] init];
 }
 
-- (void) clearContentsOfSandboxAccount {
+//DOES NOT WORK.  Not properly clearing the contents - probably because its not waiting for the task to complete.  Will just find another way to manually populate a fixture for now.
++ (void) clearContentsOfSandboxAccount {
     EvernoteNoteStore *noteStore = [[EvernoteNoteStore alloc] initWithSession:[EvernoteSession sharedSession]];
+    ExerciseListViewController *elvc = [[ExerciseListViewController alloc] init];
     
     [noteStore listNotebooksWithSuccess:^(NSArray *notebooks) {
         //Find the required notebook index
@@ -49,17 +57,43 @@
         // Store the notebook (and create it if necessary)
         if(requiredNotebookIndex == NSNotFound) {
             NSLog(@"Creating Notebook...");
-            self.notebook = [self createNewNotebookWithName:REQUIRED_NOTEBOOK_NAME];
+            elvc.notebook = [elvc createNewNotebookWithName:REQUIRED_NOTEBOOK_NAME];
         } else {
             NSLog(@"Using Existing Notebook...");
             //Delete all of the existing notes
-            self.notebook = [notebooks objectAtIndex:requiredNotebookIndex];
+            elvc.notebook = [notebooks objectAtIndex:requiredNotebookIndex];
             NSLog(@"Deleting Notes...");
-            
+            // Create a query to get all of the notes from the notebook
+            EDAMNoteFilter *filter = [[EDAMNoteFilter alloc] initWithOrder:NoteSortOrder_CREATED 
+                                                                 ascending:NO 
+                                                                     words:NULL 
+                                                              notebookGuid:elvc.notebook.guid 
+                                                                  tagGuids:nil //TODO: Should eventually find just tags in the Everfit category.
+                                                                  timeZone:[[NSTimeZone defaultTimeZone] name] 
+                                                                  inactive:NO];
+            [noteStore findNotesWithFilter:filter 
+                                    offset:0 
+                                  maxNotes:[EDAMLimitsConstants EDAM_USER_NOTES_MAX]
+                                   success:^(EDAMNoteList *list) {
+                                       if( list.notesIsSet ) {
+                                           NSLog(@"Successfully retrieved notes");
+                                           //Delete all the notes
+                                           for( EDAMNote *note in list.notes ) {
+                                               [noteStore deleteNoteWithGuid:note.guid 
+                                                                     success:^(int32_t usn) {} 
+                                                                     failure:^(NSError *error) {}];
+                                           }
+                                           NSLog(@"Successfully deleted notes");
+                                       } else {
+                                           NSLog(@"Notes not set?  That is really strange..investigate..");
+                                       }
+                                       
+                                   } 
+                                   failure:^(NSError *error) {
+                                       NSLog(@"Failed to retrieve notess");
+                                   }
+             ];
         }
-        
-        [self retrieveFitnessNotesData];
-        self.navigationItem.leftBarButtonItem = refreshButton;
         
     } failure:^(NSError *error) {
         NSLog(@"Error listing notebooks...");
@@ -83,6 +117,8 @@
 + (void) tearDown {
     [super tearDown];
 }
+        
+
 
 - (void)testCreateNotebookWithName
 {
