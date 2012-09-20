@@ -10,6 +10,7 @@
 #import "EvernoteNoteStore.h"
 #import "NSString+UUIDString.h"
 #import "NSString+ENML.h"
+#import "MixpanelAPI.h"
 
 @interface NoteContentViewController () <UITextFieldDelegate, UITextViewDelegate>
 
@@ -188,10 +189,13 @@
 }
 
 - (IBAction)savePressed:(UIBarButtonItem *)sender {
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
     if(!self.note) {
         [self createNewNote];
+        [mixpanel track:@"Created New Exercise/Note Entry"];
     } else {
         [self updateExistingNote];
+        [mixpanel track:@"Updated Existing Exercise/Note Entry"];
     }
 }
 
