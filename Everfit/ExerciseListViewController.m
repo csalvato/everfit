@@ -246,7 +246,21 @@
         } else {
             NSLog(@"Login Success! :)");
             [self initializeEvernoteStore];
-
+            EvernoteUserStore *store = [[EvernoteUserStore alloc] initWithSession:session];
+            
+            //Get the user's name for mixpanel tracking
+            [store getUserWithSuccess:^(EDAMUser *user) {
+                NSLog(@"Got User: %@", user.username);
+                MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+                [mixpanel identifyUser:user.username];
+                [mixpanel setUserProperty:[NSDate date] forKey:@"last_login"];
+                [mixpanel incrementUserPropertyWithKey:@"Total App Launches"];
+                [mixpanel track:@"Launched App"];
+            } 
+                              failure:^(NSError *error) {
+                NSLog(@"Failed to get user!");
+            }
+            ];
         } 
     }];
     
