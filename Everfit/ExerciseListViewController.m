@@ -10,6 +10,7 @@
 #import "ExerciseListViewControllerExtension.h"
 #import "NoteContentViewController.h"
 #import "Thrift.h"
+#import "MixpanelAPI.h"
 
 @interface ExerciseListViewController () <ModalNoteContentViewControllerDelegate>
 
@@ -345,6 +346,8 @@
     NSArray *sectionData = [self.tableEntries objectForKey:[self.eventDates objectAtIndex:indexPath.section]];
     self.lastSelectedNote = [sectionData objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:SEGUE_VIEW_EXERCISE sender:self];
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel track:@"Viewed Existing Exercise"];
 }
 
 #pragma mark - Modal Note Content View Controller Delegate
